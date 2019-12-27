@@ -1,0 +1,12 @@
+Package: com.nito.airphoto
+Name: AirPhoto
+Pre-Depends: cy+model.appletv
+Depends: firmware (>= 9.0), com.nito.breezy (>= 2.1-26)
+Version: 1.0
+Architecture: appletvos-arm64
+Description: View AirDropped photos utilizing breezy
+Maintainer: Kevin Bradley
+Author: Kevin Bradley
+Section: Tweaks
+Depiction: https://nitosoft.com/ATV4/airphoto/airphoto.json
+Icon: https://nitosoft.com/ATV4/airphoto/ap_icon.png
