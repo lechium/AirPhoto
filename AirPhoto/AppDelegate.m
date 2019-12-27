@@ -38,6 +38,7 @@
             if ([vc respondsToSelector:@selector(showPhotoBrowserAtIndex:)]){
                 [vc processPhotos:_airDropArray];
                 [vc showPhotoBrowserAtIndex:0];
+                [_airDropArray removeAllObjects];
             }
         } else {
             NSLog(@"error processing airdropped files");
