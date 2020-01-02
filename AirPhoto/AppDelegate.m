@@ -49,8 +49,9 @@
 - (NSString *)photosPath {
     
     NSFileManager *man = [NSFileManager defaultManager];
-    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *cache = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Photos"];
+    //NSArray* paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    //NSString *cache = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Photos"];
+    NSString *cache = [[AppDelegate ourCacheFolder] stringByAppendingPathComponent:@"Photos"];
     if (![man fileExistsAtPath:cache]){
         NSLog(@"this path wasnt found; %@",cache );
         NSDictionary *folderAttrs = @{NSFileGroupOwnerAccountName: @"staff",NSFileOwnerAccountName: @"mobile"};
@@ -71,25 +72,69 @@
     NSError *error = nil;
     
     if ([man fileExistsAtPath:newPath]){
+        [man removeItemAtPath:fileName error:nil];
         return newPath;
     }
     if ([man copyItemAtPath:fileName toPath:newPath error:&error]){
         if(!error){
-            //[man removeItemAtPath:fileName error:nil];
+            [man removeItemAtPath:fileName error:nil];
             return newPath;
         }
     }
     return nil;
 }
 
++ (NSString *)ourCacheFolder {
+    NSString *caches = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSLocalDomainMask, YES)[0];
+    return [caches stringByAppendingPathComponent:[[NSBundle mainBundle] bundleIdentifier]];
+}
+
+- (void)handleLegacyAirdropFile:(NSString *)adFile {
+    
+    NSLog(@"handleLegacyAirdropFile: %@", adFile);
+    NSFileManager *man = [NSFileManager defaultManager];
+    NSArray *fileArray = [NSArray arrayWithContentsOfFile:adFile];
+    NSLog(@"airdropper array: %@", fileArray);
+    __block NSMutableArray *processArray = [NSMutableArray new];
+    [fileArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        NSString *newFile = [self movedFileToCache:obj];
+        NSLog(@"newFile: %@", newFile);
+        [processArray addObject:newFile];
+    }];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        if (processArray.count > 0){
+            ViewController *vc = (ViewController*)self.window.rootViewController;
+            NSLog(@"vc: %@", vc);
+            [man removeItemAtPath:adFile error:nil];
+            if ([vc respondsToSelector:@selector(showPhotoBrowserAtIndex:)]){
+                [vc processPhotos:processArray];
+                [vc showPhotoBrowserAtIndex:0];
+            }
+        }
+        
+        
+    });
+    
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
+    NSString *caches = [AppDelegate ourCacheFolder];
+    NSLog(@"caches: %@", caches);
+    NSString *adFile = [caches stringByAppendingPathComponent:@"AirDrop.plist"];
+    NSLog(@"adFile: %@", adFile);
+    if ([[NSFileManager defaultManager] fileExistsAtPath:adFile]){
+        [self handleLegacyAirdropFile:adFile];
+    }
     return YES;
 }
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
 {
     NSLog(@"options: %@", options);
-     [self handleAirdroppedFile:url.path options:options[@"UIApplicationOpenURLOptionsAnnotationKey"]];
+     [self handleAirdroppedFile:url.path options:options[UIApplicationOpenURLOptionsAnnotationKey]];
     return YES;
 }
 
