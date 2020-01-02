@@ -9,6 +9,12 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "UIViewController+Additions.h"
+#import "SDWebImageManager.h"
+
+@interface LSApplicationProxy: NSObject
++(id)applicationProxyForIdentifier:(id)arg1 ;
+- (UIImage *)tv_applicationFlatIcon;
+@end
 
 @interface AppDelegate (){
     NSMutableArray <NSString *> *_airDropArray;
@@ -16,6 +22,24 @@
 @end
 
 @implementation AppDelegate
+
+- (void)_storeAppIcon {
+    
+    __block UIImage *currentImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:@"AppIcon"];
+    NSLog(@"currentImage: %@", currentImage);
+    if (currentImage == nil){
+        [[NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/TVKit.framework/"] load];
+        id proxy = [LSApplicationProxy applicationProxyForIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
+        //_ourIcon = [proxy tv_applicationFlatIcon];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            currentImage = [proxy tv_applicationFlatIcon];
+             NSLog(@"currentImage2: %@", currentImage);
+            [[SDImageCache sharedImageCache] storeImage:currentImage forKey:@"AppIcon"];
+        });
+        
+    }
+}
+
 
 - (void)handleAirdroppedFile:(NSString *)path options:(NSDictionary *)options {
     
@@ -96,7 +120,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-
+    
+    [self _storeAppIcon];
     NSString *caches = [self ourCacheFolder];
     NSString *adFile = [caches stringByAppendingPathComponent:@"AirDrop.plist"];
     if ([[NSFileManager defaultManager] fileExistsAtPath:adFile]){
@@ -107,7 +132,7 @@
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
 {
     NSLog(@"options: %@", options);
-     [self handleAirdroppedFile:url.path options:options[UIApplicationOpenURLOptionsAnnotationKey]];
+    [self handleAirdroppedFile:url.path options:options[UIApplicationOpenURLOptionsAnnotationKey]];
     return YES;
 }
 

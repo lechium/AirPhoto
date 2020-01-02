@@ -402,7 +402,10 @@
         self.detailView.previewView.imageView.image = [UIImage imageNamed:currentAsset.defaultImageName];
     }
     [self.detailView.previewView updateAsset:currentAsset];
-    
+    if (currentAsset.forcedImage != nil) {
+        self.detailView.previewView.imageView.image = currentAsset.forcedImage;
+        return;
+    }
 }
 
 
@@ -415,14 +418,12 @@
 }
 
 - (void)safeReloadData {
-    
-    [[self tableView]reloadData];
-    self.savedIndexPath = nil;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[self tableView]reloadData];
+        self.savedIndexPath = nil;
+
+    });
 }
-
-
-
-
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

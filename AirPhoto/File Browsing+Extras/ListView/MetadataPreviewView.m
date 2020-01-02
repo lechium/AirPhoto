@@ -20,7 +20,7 @@
 
 @implementation MetaDataAsset
 
-@synthesize name, assetDescription, metaDictionary, imagePath, detail, detailOptions, selectorName, tag, imagePathDark;
+@synthesize name, assetDescription, metaDictionary, imagePath, detail, detailOptions, selectorName, tag, imagePathDark, forcedImage;
 
 - (id)init {
     
@@ -41,6 +41,7 @@
     detail = mutableDict[@"detail"];
     detailOptions = mutableDict[@"detailOptions"];
     selectorName = mutableDict[@"selectorName"];
+    forcedImage = mutableDict[@"forcedImage"];
     tag = [mutableDict[@"tag"] integerValue];
     [mutableDict removeObjectForKey:@"name"];
     [mutableDict removeObjectForKey:@"description"];

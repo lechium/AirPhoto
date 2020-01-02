@@ -8,7 +8,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "CXPhotoBrowser.h"
 #import "CXZoomingScrollView.h"
-
+#import <MediaRemote/MediaRemote.h>
+#import "SDWebImageManager.h"
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 #define PADDING                 10
@@ -30,7 +31,7 @@
     id <CXPhotoBrowserDelegate> _delegate;
     NSUInteger _photoCount;
     NSMutableArray *_photos;
-    
+    NSTimer *_playbackTimer;
     // Views
 	UIScrollView *_pagingScrollView; //container
     
@@ -56,6 +57,7 @@
     BOOL _shouldUseDefaultUINavigationBar;
     BOOL _supportReload;
     BOOL _scrolling;
+    BOOL _wasPlayingBack; //experimental
 }
 
 // Layout
@@ -198,11 +200,103 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 	_pagingScrollView.backgroundColor = [UIColor blackColor];
     _pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
     _pagingScrollView.panGestureRecognizer.allowedTouchTypes = @[@(UITouchTypeIndirect)];
-    
+    _playbackState = CXBrowserPlaybackStateUnknown;
 	[self.view addSubview:_pagingScrollView];
-    
+
     [super viewDidLoad];
+    /*
+    MRMediaRemoteGetNowPlayingInfo(dispatch_get_main_queue(), ^(CFDictionaryRef info) {
+        //NSLog(@"We got the information: %@", info);
+        
+        //This key may not be available, if its is not, we defer to ignoring the alert.
+        NSString *mediaType = [(NSDictionary *)CFBridgingRelease(info) valueForKey:@"kMRMediaRemoteNowPlayingInfoMediaType"];
+        
+        if (info != nil){
+            if ([mediaType containsString:@"Music"]){
+                self->_wasPlayingBack = true;
+            } else {
+                self->_wasPlayingBack = false;
+            }
+            
+        } else { //info is null, nothing is currently playing, call original implementation.
+            self->_wasPlayingBack = false;
+        }
+        
+    });
+     */
 }
+
+- (void)pressesBegan:(NSSet<UIPress *> *)presses withEvent:(UIPressesEvent *)event
+{
+    //LOG_SELF;
+    NSLog(@"pressesBegan: %@", presses);
+    
+    for (UIPress *press in presses)
+    {
+        if (press.type == UIPressTypePlayPause || press.type == UIPressTypeSelect)
+        {
+            NSLog(@"bro...");
+            [self togglePlaybackState];
+        } else {
+            [super pressesBegan:presses withEvent:event];
+        }
+    }
+    
+}
+
+
+- (void)pressesEnded:(NSSet<UIPress *> *)presses withEvent:(UIPressesEvent *)event
+{
+    //LOG_SELF;
+    NSLog(@"pressesEnded: %@", presses);
+    
+    for (UIPress *press in presses)
+    {
+        if (press.type == UIPressTypePlayPause)
+        {
+            NSLog(@"toggle state?");
+           // [self togglePlaybackState];
+        } else {
+            [super pressesEnded:presses withEvent:event];
+        }
+    }
+}
+
+- (void)pausePlayback {
+    
+    if (self.playbackState == CXBrowserPlaybackStatePlaying){
+        if (_playbackTimer != nil){
+            [_playbackTimer invalidate];
+            _playbackTimer = nil;
+        }
+        self.playbackState = CXBrowserPlaybackStatePaused;
+    }
+}
+
+- (void)togglePlaybackState {
+    
+    switch (self.playbackState) {
+        case CXBrowserPlaybackStatePaused:
+            [self playbackPhotos];
+            break;
+        case CXBrowserPlaybackStatePlaying:
+            //pause
+            [self pausePlayback];
+            break;
+        case CXBrowserPlaybackStateStopped: //start over?
+            [self changeToPageAtIndex:0];
+            break;
+        case CXBrowserPlaybackStateUnknown:
+            //start playing?
+            [self playbackPhotos];
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -238,6 +332,13 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 
 - (void)viewWillDisappear:(BOOL)animated {
     
+    if (_playbackTimer){
+        [_playbackTimer invalidate];
+        _playbackTimer = nil;
+        if (!_wasPlayingBack){
+            MRMediaRemoteSendCommand(kMRStop, 0);
+        }
+    }
     // Check that we're being popped for good
     if ([self.navigationController.viewControllers objectAtIndex:0] != self &&
         ![self.navigationController.viewControllers containsObject:self]) {
@@ -308,6 +409,44 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     
 }
 
+- (BOOL)playMusicDefault {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"APSettingsPlayMusic"];
+}
+
+- (NSInteger)timePerPhotoDefault{
+    return [[NSUserDefaults standardUserDefaults] integerForKey:@"APSettingsTimePerPhoto"];
+}
+
+
+- (void)playbackPhotos {
+    
+    self.playbackState = CXBrowserPlaybackStatePlaying;
+    if ([self playMusicDefault] == true){
+        MRMediaRemoteSendCommand(kMRPlay, 0);
+    }
+    NSInteger timePerPhoto = [self timePerPhotoDefault];
+    if (timePerPhoto == 0){
+        timePerPhoto = 5;
+    }
+    _playbackTimer = [NSTimer scheduledTimerWithTimeInterval:timePerPhoto repeats:true block:^(NSTimer * _Nonnull timer) {
+       
+        [self goToNextPhoto];
+        
+    }];
+    
+    
+}
+
+- (void)goToNextPhoto {
+    
+    NSLog(@"currentPhoto Index: %lu", self.currentPageIndex);
+    NSLog(@"photo count: %lu", self.photoCount);
+    if (self.currentPageIndex < self.photoCount){
+        [self changeToPageAtIndex:self.currentPageIndex+1];
+    }
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -318,49 +457,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-/*
-#pragma mark - Customlize View
-- (void)resetCustomlizeBrowserNavigationBarView
-{
-    CGRect frame = [self frameForNavigationBarViewAtOrientation:self.interfaceOrientation];
-    if (!browserNavigationBarView && _dataSource && [_dataSource respondsToSelector:@selector(browserNavigationBarViewOfOfPhotoBrowser:withSize:)])
-    {
-        browserNavigationBarView = [_dataSource browserNavigationBarViewOfOfPhotoBrowser:self withSize:frame.size];
-    }
-    
-    if (browserNavigationBarView)
-    {
-        [browserNavigationBarView setFrame:frame];
-    }
-    else
-    {
-        browserNavigationBarView = [[CXBrowserNavBarView alloc] initWithFrame:frame];
-    }
-//    [self.view addSubview:browserNavigationBarView];
-    [browserNavigationBarView assignPhotoBrowser:self];
-}
 
-
-- (void)resetCustomlizeBrowserToolBarView
-{
-    CGRect frame = [self frameForToolBarViewAtOrientation:self.interfaceOrientation];
-    browserToolBarView = nil;
-    if (_dataSource && [_dataSource respondsToSelector:@selector(browserToolBarViewOfPhotoBrowser:withSize:)])
-    {
-        browserToolBarView = [_dataSource browserToolBarViewOfPhotoBrowser:self withSize:frame.size];
-    }
-    
-    if (browserToolBarView)
-    {
-        [browserToolBarView setFrame:frame];
-    }
-    else
-    {
-        browserToolBarView = [[CXBrowserToolBarView alloc] initWithFrame:frame];
-    }
-    [browserToolBarView assignPhotoBrowser:self];
-}
-*/
 #pragma mark - Layout
 - (void)performLayout
 {
@@ -564,9 +661,16 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 {
     if (index < [self numberOfPhotos]) {
 		CGRect pageFrame = [self frameForPageAtIndex:index];
-		_pagingScrollView.contentOffset = CGPointMake(pageFrame.origin.x - PADDING, 0);
+        [UIView animateWithDuration:0.5 animations:^{
+            [self->_pagingScrollView setContentOffset:CGPointMake(pageFrame.origin.x - PADDING, 0) animated:false];
+            //self->_pagingScrollView.contentOffset = CGPointMake(pageFrame.origin.x - PADDING, 0);
+
+        }];
 //        [self currentPageDidUpdated];
-	}
+	} else {
+        self.playbackState = CXBrowserPlaybackStateStopped;
+        
+    }
 }
 #pragma mark - Frame Calculations
 

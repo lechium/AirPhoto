@@ -13,6 +13,14 @@
 #import "CXBrowserNavBarView.h"
 #import "CXBrowserToolBarView.h"
 
+typedef NS_ENUM(NSInteger, CXBrowserPlaybackState) {
+    CXBrowserPlaybackStateUnknown,
+    CXBrowserPlaybackStateStopped,
+    CXBrowserPlaybackStatePlaying,
+    CXBrowserPlaybackStatePaused,
+    
+};
+
 @protocol CXPhotoBrowserDataSource;
 @protocol CXPhotoBrowserDelegate;
 @interface CXPhotoBrowser : UIViewController
@@ -27,6 +35,7 @@
 @property (nonatomic, readonly) NSUInteger photoCount;
 @property (nonatomic, readonly) NSUInteger currentPageIndex;
 @property (nonatomic, readonly) id<CXPhotoBrowserDelegate> delegate;
+@property (readwrite, assign) CXBrowserPlaybackState playbackState;
 - (id)initWithDataSource:(id <CXPhotoBrowserDataSource>)dataSource  delegate:(id <CXPhotoBrowserDelegate>)delegate;
 
 // Reloads the photo browser and refetches data
@@ -35,15 +44,14 @@
 // Set page that photo browser starts on
 - (void)setInitialPageIndex:(NSUInteger)index;
 
-// Customlize view
-//- (void)resetCustomlizeBrowserNavigationBarView;
-//- (void)resetCustomlizeBrowserToolBarView;
 
 // Navigation & control / Hiding / Showing
 - (void)setToolBarViewsHidden:(BOOL)hidden animated:(BOOL)animated;
 
 //Reload
 //- (void)reloadCurrentPhoto; undone
+- (void)playbackPhotos;
+
 @end
 
 @protocol CXPhotoBrowserDataSource <NSObject>
@@ -130,4 +138,6 @@
  *  @return supportReload
  */
 - (BOOL)supportReload;
+
+
 @end

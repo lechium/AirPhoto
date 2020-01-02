@@ -44,6 +44,7 @@
 @property (readwrite, assign) NSInteger tag;
 @property (nonatomic, strong) NSString *fullImagePath; //optional
 @property (nonatomic, strong) NSString *defaultImageName; //optional
+@property (nonatomic, strong) UIImage *forcedImage;
 @property (readwrite, assign) BOOL accessory;
 
 - (SEL)ourSelector;

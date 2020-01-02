@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SDWebImageManager.h"
+#import "APSettingsViewController.h"
 
 @interface ViewController ()
 @property NSArray <CXPhoto *> *photos;
@@ -28,6 +29,16 @@
     self.items = [self currentItems];
     self.title = self.currentPath.lastPathComponent;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editSelected:)];
+    
+    UIImage *image = [UIImage imageNamed:@"gear-small"];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(showSettings:)];
+}
+
+- (void)showSettings:(id)sender {
+    
+    APSettingsViewController *settingsView = [APSettingsViewController new];
+    [self presentViewController:settingsView animated:true completion:nil];
+    
 }
 
 - (void)editSelected:(id)sender {
@@ -211,6 +222,7 @@
     CXPhotoBrowser *photoBrowser = [[CXPhotoBrowser alloc] initWithDataSource:self delegate:self];
     [photoBrowser setInitialPageIndex:index];
     [self presentViewController:photoBrowser animated:YES completion:nil];
+    [photoBrowser playbackPhotos];
     
 }
 

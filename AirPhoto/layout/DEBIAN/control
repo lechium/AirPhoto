@@ -2,7 +2,7 @@ Package: com.nito.airphoto
 Name: AirPhoto
 Pre-Depends: cy+model.appletv
 Depends: firmware (>= 9.0), com.nito.breezy (>= 2.2-1)
-Version: 1.1
+Version: 1.2
 Architecture: appletvos-arm64
 Description: View AirDropped photos utilizing breezy
 Maintainer: Kevin Bradley
