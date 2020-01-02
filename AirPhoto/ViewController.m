@@ -55,7 +55,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LOG_SELF;
-    NSLog(@"editingStyle : %li, indexPath: %@", (long)editingStyle, indexPath);
+    //NSLog(@"editingStyle : %li, indexPath: %@", (long)editingStyle, indexPath);
     NSFileManager *man = [NSFileManager defaultManager];
     MetaDataAsset  *mda = self.items[indexPath.row];
     NSString *fullPath = [[self currentPath] stringByAppendingPathComponent:mda.name];
@@ -109,7 +109,7 @@
     NSIndexPath *ip = [self savedIndexPath];
     MetaDataAsset  *mda = self.items[ip.row];
     NSString *fullPath = [[self currentPath] stringByAppendingPathComponent:mda.name];
-    NSLog(@"fullPath: %@", fullPath);
+    //NSLog(@"fullPath: %@", fullPath);
     [self showPhotoBrowserAtIndex:ip.row];
     //[self showPlayerViewWithFile:fullPath];
     
@@ -141,7 +141,7 @@
                 
                 __block UIImage *currentImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:currentAsset.name];
                 
-                NSLog(@"image from cache: %@", currentImage);
+                //NSLog(@"image from cache: %@", currentImage);
                 
                 if (!currentImage){
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{

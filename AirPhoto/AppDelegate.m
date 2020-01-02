@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "UIViewController+Additions.h"
 
 @interface AppDelegate (){
     NSMutableArray <NSString *> *_airDropArray;
@@ -15,8 +16,6 @@
 @end
 
 @implementation AppDelegate
-
-
 
 - (void)handleAirdroppedFile:(NSString *)path options:(NSDictionary *)options {
     
@@ -34,8 +33,7 @@
     if (docIndex == (docCount-1)){
         if (_airDropArray.count > 0){
             
-            ViewController *vc = (ViewController*)self.window.rootViewController;
-            NSLog(@"vc: %@", vc);
+            ViewController *vc = (ViewController*)[self topViewController];
             if ([vc respondsToSelector:@selector(showPhotoBrowserAtIndex:)]){
                 [vc processPhotos:_airDropArray];
                 [vc showPhotoBrowserAtIndex:0];
@@ -83,7 +81,7 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         if (processArray.count > 0){
-            ViewController *vc = (ViewController*)self.window.rootViewController;
+            ViewController *vc = (ViewController*)[self topViewController];
             [man removeItemAtPath:adFile error:nil];
             if ([vc respondsToSelector:@selector(showPhotoBrowserAtIndex:)]){
                 [vc processPhotos:processArray];
@@ -100,9 +98,7 @@
     // Override point for customization after application launch.
 
     NSString *caches = [self ourCacheFolder];
-    NSLog(@"caches: %@", caches);
     NSString *adFile = [caches stringByAppendingPathComponent:@"AirDrop.plist"];
-    NSLog(@"adFile: %@", adFile);
     if ([[NSFileManager defaultManager] fileExistsAtPath:adFile]){
         [self handleLegacyAirdropFile:adFile];
     }
