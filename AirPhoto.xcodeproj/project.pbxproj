@@ -7,6 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		328495B623BD8EAC009DDE26 /* NSObject+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284956F23BD8EAC009DDE26 /* NSObject+Additions.m */; };
+		328495B723BD8EAC009DDE26 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284957123BD8EAC009DDE26 /* UIColor+Additions.m */; };
+		328495B823BD8EAC009DDE26 /* UIView+RecursiveFind.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284957323BD8EAC009DDE26 /* UIView+RecursiveFind.m */; };
+		328495B923BD8EAC009DDE26 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284957523BD8EAC009DDE26 /* UIViewController+Additions.m */; };
+		328495BA23BD8EAC009DDE26 /* UIWindow+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284957723BD8EAC009DDE26 /* UIWindow+Additions.m */; };
+		328495BC23BD8EAC009DDE26 /* MetadataPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284957B23BD8EAC009DDE26 /* MetadataPreviewView.m */; };
+		328495BD23BD8EAC009DDE26 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284957D23BD8EAC009DDE26 /* SettingsViewController.m */; };
+		328495BE23BD8EAC009DDE26 /* ALView+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284958023BD8EAC009DDE26 /* ALView+PureLayout.m */; };
+		328495BF23BD8EAC009DDE26 /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284958223BD8EAC009DDE26 /* NSArray+PureLayout.m */; };
+		328495C023BD8EAC009DDE26 /* NSLayoutConstraint+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284958423BD8EAC009DDE26 /* NSLayoutConstraint+PureLayout.m */; };
+		328495C123BD8EAC009DDE26 /* FLAnimatedImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284958B23BD8EAC009DDE26 /* FLAnimatedImageView+WebCache.m */; };
+		328495C223BD8EAC009DDE26 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284958D23BD8EAC009DDE26 /* MKAnnotationView+WebCache.m */; };
+		328495C323BD8EAC009DDE26 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284958F23BD8EAC009DDE26 /* NSData+ImageContentType.m */; };
+		328495C423BD8EAC009DDE26 /* NSImage+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284959123BD8EAC009DDE26 /* NSImage+WebCache.m */; };
+		328495C523BD8EAC009DDE26 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284959323BD8EAC009DDE26 /* SDImageCache.m */; };
+		328495C623BD8EAC009DDE26 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284959523BD8EAC009DDE26 /* SDWebImageCompat.m */; };
+		328495C723BD8EAC009DDE26 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284959723BD8EAC009DDE26 /* SDWebImageDecoder.m */; };
+		328495C823BD8EAC009DDE26 /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284959923BD8EAC009DDE26 /* SDWebImageDownloader.m */; };
+		328495C923BD8EAC009DDE26 /* SDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284959B23BD8EAC009DDE26 /* SDWebImageDownloaderOperation.m */; };
+		328495CA23BD8EAC009DDE26 /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284959D23BD8EAC009DDE26 /* SDWebImageManager.m */; };
+		328495CB23BD8EAC009DDE26 /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 328495A023BD8EAC009DDE26 /* SDWebImagePrefetcher.m */; };
+		328495CC23BD8EAC009DDE26 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 328495A223BD8EAC009DDE26 /* UIButton+WebCache.m */; };
+		328495CD23BD8EAC009DDE26 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 328495A423BD8EAC009DDE26 /* UIImage+GIF.m */; };
+		328495CE23BD8EAC009DDE26 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 328495A623BD8EAC009DDE26 /* UIImage+MultiFormat.m */; };
+		328495CF23BD8EAC009DDE26 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 328495A823BD8EAC009DDE26 /* UIImage+WebP.m */; };
+		328495D023BD8EAC009DDE26 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 328495AA23BD8EAC009DDE26 /* UIImageView+HighlightedWebCache.m */; };
+		328495D123BD8EAC009DDE26 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 328495AC23BD8EAC009DDE26 /* UIImageView+WebCache.m */; };
+		328495D223BD8EAC009DDE26 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 328495AE23BD8EAC009DDE26 /* UIView+WebCacheOperation.m */; };
+		328495D323BD8EAC009DDE26 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 328495B123BD8EAC009DDE26 /* SVIndefiniteAnimatedView.m */; };
+		328495D423BD8EAC009DDE26 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 328495B323BD8EAC009DDE26 /* SVProgressHUD.m */; };
+		328495D523BD8EAC009DDE26 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 328495B523BD8EAC009DDE26 /* SVRadialGradientLayer.m */; };
+		328495DF23BD926A009DDE26 /* generic-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 328495DE23BD926A009DDE26 /* generic-icon.png */; };
+		328495E123BD981E009DDE26 /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 328495E023BD981E009DDE26 /* folder.png */; };
+		328495E523BD984F009DDE26 /* angle-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 328495E223BD984F009DDE26 /* angle-mask.png */; };
+		328495E623BD984F009DDE26 /* angle-mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 328495E323BD984F009DDE26 /* angle-mask@2x.png */; };
+		328495E723BD984F009DDE26 /* angle-mask@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 328495E423BD984F009DDE26 /* angle-mask@3x.png */; };
 		32BD493523B641D800BE295F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BD493423B641D800BE295F /* AppDelegate.m */; };
 		32BD493823B641D800BE295F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BD493723B641D800BE295F /* ViewController.m */; };
 		32BD493B23B641D800BE295F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32BD493923B641D800BE295F /* Main.storyboard */; };
@@ -24,6 +60,77 @@
 
 /* Begin PBXFileReference section */
 		3284956B23BD5FF2009DDE26 /* ent.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ent.plist; sourceTree = "<group>"; };
+		3284956E23BD8EAC009DDE26 /* NSObject+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Additions.h"; sourceTree = "<group>"; };
+		3284956F23BD8EAC009DDE26 /* NSObject+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Additions.m"; sourceTree = "<group>"; };
+		3284957023BD8EAC009DDE26 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
+		3284957123BD8EAC009DDE26 /* UIColor+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Additions.m"; sourceTree = "<group>"; };
+		3284957223BD8EAC009DDE26 /* UIView+RecursiveFind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RecursiveFind.h"; sourceTree = "<group>"; };
+		3284957323BD8EAC009DDE26 /* UIView+RecursiveFind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RecursiveFind.m"; sourceTree = "<group>"; };
+		3284957423BD8EAC009DDE26 /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Additions.h"; sourceTree = "<group>"; };
+		3284957523BD8EAC009DDE26 /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Additions.m"; sourceTree = "<group>"; };
+		3284957623BD8EAC009DDE26 /* UIWindow+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Additions.h"; sourceTree = "<group>"; };
+		3284957723BD8EAC009DDE26 /* UIWindow+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Additions.m"; sourceTree = "<group>"; };
+		3284957A23BD8EAC009DDE26 /* MetadataPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetadataPreviewView.h; sourceTree = "<group>"; };
+		3284957B23BD8EAC009DDE26 /* MetadataPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetadataPreviewView.m; sourceTree = "<group>"; };
+		3284957C23BD8EAC009DDE26 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		3284957D23BD8EAC009DDE26 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		3284957F23BD8EAC009DDE26 /* ALView+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALView+PureLayout.h"; sourceTree = "<group>"; };
+		3284958023BD8EAC009DDE26 /* ALView+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALView+PureLayout.m"; sourceTree = "<group>"; };
+		3284958123BD8EAC009DDE26 /* NSArray+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+PureLayout.h"; sourceTree = "<group>"; };
+		3284958223BD8EAC009DDE26 /* NSArray+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+PureLayout.m"; sourceTree = "<group>"; };
+		3284958323BD8EAC009DDE26 /* NSLayoutConstraint+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+PureLayout.h"; sourceTree = "<group>"; };
+		3284958423BD8EAC009DDE26 /* NSLayoutConstraint+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+PureLayout.m"; sourceTree = "<group>"; };
+		3284958523BD8EAC009DDE26 /* PureLayout+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PureLayout+Internal.h"; sourceTree = "<group>"; };
+		3284958623BD8EAC009DDE26 /* PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayout.h; sourceTree = "<group>"; };
+		3284958723BD8EAC009DDE26 /* PureLayoutDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayoutDefines.h; sourceTree = "<group>"; };
+		3284958A23BD8EAC009DDE26 /* FLAnimatedImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FLAnimatedImageView+WebCache.h"; sourceTree = "<group>"; };
+		3284958B23BD8EAC009DDE26 /* FLAnimatedImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FLAnimatedImageView+WebCache.m"; sourceTree = "<group>"; };
+		3284958C23BD8EAC009DDE26 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
+		3284958D23BD8EAC009DDE26 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
+		3284958E23BD8EAC009DDE26 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
+		3284958F23BD8EAC009DDE26 /* NSData+ImageContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ImageContentType.m"; sourceTree = "<group>"; };
+		3284959023BD8EAC009DDE26 /* NSImage+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+WebCache.h"; sourceTree = "<group>"; };
+		3284959123BD8EAC009DDE26 /* NSImage+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+WebCache.m"; sourceTree = "<group>"; };
+		3284959223BD8EAC009DDE26 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
+		3284959323BD8EAC009DDE26 /* SDImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDImageCache.m; sourceTree = "<group>"; };
+		3284959423BD8EAC009DDE26 /* SDWebImageCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageCompat.h; sourceTree = "<group>"; };
+		3284959523BD8EAC009DDE26 /* SDWebImageCompat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageCompat.m; sourceTree = "<group>"; };
+		3284959623BD8EAC009DDE26 /* SDWebImageDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDecoder.h; sourceTree = "<group>"; };
+		3284959723BD8EAC009DDE26 /* SDWebImageDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDecoder.m; sourceTree = "<group>"; };
+		3284959823BD8EAC009DDE26 /* SDWebImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDownloader.h; sourceTree = "<group>"; };
+		3284959923BD8EAC009DDE26 /* SDWebImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDownloader.m; sourceTree = "<group>"; };
+		3284959A23BD8EAC009DDE26 /* SDWebImageDownloaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDownloaderOperation.h; sourceTree = "<group>"; };
+		3284959B23BD8EAC009DDE26 /* SDWebImageDownloaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDownloaderOperation.m; sourceTree = "<group>"; };
+		3284959C23BD8EAC009DDE26 /* SDWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageManager.h; sourceTree = "<group>"; };
+		3284959D23BD8EAC009DDE26 /* SDWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageManager.m; sourceTree = "<group>"; };
+		3284959E23BD8EAC009DDE26 /* SDWebImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageOperation.h; sourceTree = "<group>"; };
+		3284959F23BD8EAC009DDE26 /* SDWebImagePrefetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImagePrefetcher.h; sourceTree = "<group>"; };
+		328495A023BD8EAC009DDE26 /* SDWebImagePrefetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImagePrefetcher.m; sourceTree = "<group>"; };
+		328495A123BD8EAC009DDE26 /* UIButton+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WebCache.h"; sourceTree = "<group>"; };
+		328495A223BD8EAC009DDE26 /* UIButton+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WebCache.m"; sourceTree = "<group>"; };
+		328495A323BD8EAC009DDE26 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
+		328495A423BD8EAC009DDE26 /* UIImage+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GIF.m"; sourceTree = "<group>"; };
+		328495A523BD8EAC009DDE26 /* UIImage+MultiFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MultiFormat.h"; sourceTree = "<group>"; };
+		328495A623BD8EAC009DDE26 /* UIImage+MultiFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MultiFormat.m"; sourceTree = "<group>"; };
+		328495A723BD8EAC009DDE26 /* UIImage+WebP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WebP.h"; sourceTree = "<group>"; };
+		328495A823BD8EAC009DDE26 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
+		328495A923BD8EAC009DDE26 /* UIImageView+HighlightedWebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+HighlightedWebCache.h"; sourceTree = "<group>"; };
+		328495AA23BD8EAC009DDE26 /* UIImageView+HighlightedWebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+HighlightedWebCache.m"; sourceTree = "<group>"; };
+		328495AB23BD8EAC009DDE26 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
+		328495AC23BD8EAC009DDE26 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
+		328495AD23BD8EAC009DDE26 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
+		328495AE23BD8EAC009DDE26 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		328495B023BD8EAC009DDE26 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		328495B123BD8EAC009DDE26 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		328495B223BD8EAC009DDE26 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		328495B323BD8EAC009DDE26 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		328495B423BD8EAC009DDE26 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		328495B523BD8EAC009DDE26 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		328495DE23BD926A009DDE26 /* generic-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "generic-icon.png"; sourceTree = "<group>"; };
+		328495E023BD981E009DDE26 /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
+		328495E223BD984F009DDE26 /* angle-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "angle-mask.png"; path = "File Browsing+Extras/angle-mask.png"; sourceTree = "<group>"; };
+		328495E323BD984F009DDE26 /* angle-mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "angle-mask@2x.png"; path = "File Browsing+Extras/angle-mask@2x.png"; sourceTree = "<group>"; };
+		328495E423BD984F009DDE26 /* angle-mask@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "angle-mask@3x.png"; path = "File Browsing+Extras/angle-mask@3x.png"; sourceTree = "<group>"; };
 		32BD493023B641D800BE295F /* AirPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32BD493323B641D800BE295F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		32BD493423B641D800BE295F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -64,6 +171,127 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3284956C23BD8EAC009DDE26 /* File Browsing+Extras */ = {
+			isa = PBXGroup;
+			children = (
+				3284956D23BD8EAC009DDE26 /* Categories */,
+				3284957923BD8EAC009DDE26 /* ListView */,
+				3284957E23BD8EAC009DDE26 /* PureLayout */,
+				3284958823BD8EAC009DDE26 /* SDWebImage */,
+				328495AF23BD8EAC009DDE26 /* SVProgressHUD */,
+			);
+			path = "File Browsing+Extras";
+			sourceTree = "<group>";
+		};
+		3284956D23BD8EAC009DDE26 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				3284956E23BD8EAC009DDE26 /* NSObject+Additions.h */,
+				3284956F23BD8EAC009DDE26 /* NSObject+Additions.m */,
+				3284957023BD8EAC009DDE26 /* UIColor+Additions.h */,
+				3284957123BD8EAC009DDE26 /* UIColor+Additions.m */,
+				3284957223BD8EAC009DDE26 /* UIView+RecursiveFind.h */,
+				3284957323BD8EAC009DDE26 /* UIView+RecursiveFind.m */,
+				3284957423BD8EAC009DDE26 /* UIViewController+Additions.h */,
+				3284957523BD8EAC009DDE26 /* UIViewController+Additions.m */,
+				3284957623BD8EAC009DDE26 /* UIWindow+Additions.h */,
+				3284957723BD8EAC009DDE26 /* UIWindow+Additions.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		3284957923BD8EAC009DDE26 /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				3284957A23BD8EAC009DDE26 /* MetadataPreviewView.h */,
+				3284957B23BD8EAC009DDE26 /* MetadataPreviewView.m */,
+				3284957C23BD8EAC009DDE26 /* SettingsViewController.h */,
+				3284957D23BD8EAC009DDE26 /* SettingsViewController.m */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
+		3284957E23BD8EAC009DDE26 /* PureLayout */ = {
+			isa = PBXGroup;
+			children = (
+				3284957F23BD8EAC009DDE26 /* ALView+PureLayout.h */,
+				3284958023BD8EAC009DDE26 /* ALView+PureLayout.m */,
+				3284958123BD8EAC009DDE26 /* NSArray+PureLayout.h */,
+				3284958223BD8EAC009DDE26 /* NSArray+PureLayout.m */,
+				3284958323BD8EAC009DDE26 /* NSLayoutConstraint+PureLayout.h */,
+				3284958423BD8EAC009DDE26 /* NSLayoutConstraint+PureLayout.m */,
+				3284958523BD8EAC009DDE26 /* PureLayout+Internal.h */,
+				3284958623BD8EAC009DDE26 /* PureLayout.h */,
+				3284958723BD8EAC009DDE26 /* PureLayoutDefines.h */,
+			);
+			path = PureLayout;
+			sourceTree = "<group>";
+		};
+		3284958823BD8EAC009DDE26 /* SDWebImage */ = {
+			isa = PBXGroup;
+			children = (
+				3284958923BD8EAC009DDE26 /* FLAnimatedImage */,
+				3284958C23BD8EAC009DDE26 /* MKAnnotationView+WebCache.h */,
+				3284958D23BD8EAC009DDE26 /* MKAnnotationView+WebCache.m */,
+				3284958E23BD8EAC009DDE26 /* NSData+ImageContentType.h */,
+				3284958F23BD8EAC009DDE26 /* NSData+ImageContentType.m */,
+				3284959023BD8EAC009DDE26 /* NSImage+WebCache.h */,
+				3284959123BD8EAC009DDE26 /* NSImage+WebCache.m */,
+				3284959223BD8EAC009DDE26 /* SDImageCache.h */,
+				3284959323BD8EAC009DDE26 /* SDImageCache.m */,
+				3284959423BD8EAC009DDE26 /* SDWebImageCompat.h */,
+				3284959523BD8EAC009DDE26 /* SDWebImageCompat.m */,
+				3284959623BD8EAC009DDE26 /* SDWebImageDecoder.h */,
+				3284959723BD8EAC009DDE26 /* SDWebImageDecoder.m */,
+				3284959823BD8EAC009DDE26 /* SDWebImageDownloader.h */,
+				3284959923BD8EAC009DDE26 /* SDWebImageDownloader.m */,
+				3284959A23BD8EAC009DDE26 /* SDWebImageDownloaderOperation.h */,
+				3284959B23BD8EAC009DDE26 /* SDWebImageDownloaderOperation.m */,
+				3284959C23BD8EAC009DDE26 /* SDWebImageManager.h */,
+				3284959D23BD8EAC009DDE26 /* SDWebImageManager.m */,
+				3284959E23BD8EAC009DDE26 /* SDWebImageOperation.h */,
+				3284959F23BD8EAC009DDE26 /* SDWebImagePrefetcher.h */,
+				328495A023BD8EAC009DDE26 /* SDWebImagePrefetcher.m */,
+				328495A123BD8EAC009DDE26 /* UIButton+WebCache.h */,
+				328495A223BD8EAC009DDE26 /* UIButton+WebCache.m */,
+				328495A323BD8EAC009DDE26 /* UIImage+GIF.h */,
+				328495A423BD8EAC009DDE26 /* UIImage+GIF.m */,
+				328495A523BD8EAC009DDE26 /* UIImage+MultiFormat.h */,
+				328495A623BD8EAC009DDE26 /* UIImage+MultiFormat.m */,
+				328495A723BD8EAC009DDE26 /* UIImage+WebP.h */,
+				328495A823BD8EAC009DDE26 /* UIImage+WebP.m */,
+				328495A923BD8EAC009DDE26 /* UIImageView+HighlightedWebCache.h */,
+				328495AA23BD8EAC009DDE26 /* UIImageView+HighlightedWebCache.m */,
+				328495AB23BD8EAC009DDE26 /* UIImageView+WebCache.h */,
+				328495AC23BD8EAC009DDE26 /* UIImageView+WebCache.m */,
+				328495AD23BD8EAC009DDE26 /* UIView+WebCacheOperation.h */,
+				328495AE23BD8EAC009DDE26 /* UIView+WebCacheOperation.m */,
+			);
+			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		3284958923BD8EAC009DDE26 /* FLAnimatedImage */ = {
+			isa = PBXGroup;
+			children = (
+				3284958A23BD8EAC009DDE26 /* FLAnimatedImageView+WebCache.h */,
+				3284958B23BD8EAC009DDE26 /* FLAnimatedImageView+WebCache.m */,
+			);
+			path = FLAnimatedImage;
+			sourceTree = "<group>";
+		};
+		328495AF23BD8EAC009DDE26 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				328495B023BD8EAC009DDE26 /* SVIndefiniteAnimatedView.h */,
+				328495B123BD8EAC009DDE26 /* SVIndefiniteAnimatedView.m */,
+				328495B223BD8EAC009DDE26 /* SVProgressHUD.h */,
+				328495B323BD8EAC009DDE26 /* SVProgressHUD.m */,
+				328495B423BD8EAC009DDE26 /* SVRadialGradientLayer.h */,
+				328495B523BD8EAC009DDE26 /* SVRadialGradientLayer.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		32BD492723B641D800BE295F = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +311,7 @@
 		32BD493223B641D800BE295F /* AirPhoto */ = {
 			isa = PBXGroup;
 			children = (
+				3284956C23BD8EAC009DDE26 /* File Browsing+Extras */,
 				3284956B23BD5FF2009DDE26 /* ent.plist */,
 				32BD494623B641F800BE295F /* CXPhotoBrowser */,
 				32BD493323B641D800BE295F /* AppDelegate.h */,
@@ -92,7 +321,12 @@
 				32BD493923B641D800BE295F /* Main.storyboard */,
 				32BD493C23B641DB00BE295F /* Assets.xcassets */,
 				32BD493E23B641DB00BE295F /* Info.plist */,
+				328495DE23BD926A009DDE26 /* generic-icon.png */,
+				328495E023BD981E009DDE26 /* folder.png */,
 				32BD493F23B641DB00BE295F /* main.m */,
+				328495E223BD984F009DDE26 /* angle-mask.png */,
+				328495E323BD984F009DDE26 /* angle-mask@2x.png */,
+				328495E423BD984F009DDE26 /* angle-mask@3x.png */,
 			);
 			path = AirPhoto;
 			sourceTree = "<group>";
@@ -180,8 +414,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				328495E523BD984F009DDE26 /* angle-mask.png in Resources */,
 				32BD493D23B641DB00BE295F /* Assets.xcassets in Resources */,
+				328495E623BD984F009DDE26 /* angle-mask@2x.png in Resources */,
 				32BD493B23B641D800BE295F /* Main.storyboard in Resources */,
+				328495DF23BD926A009DDE26 /* generic-icon.png in Resources */,
+				328495E723BD984F009DDE26 /* angle-mask@3x.png in Resources */,
+				328495E123BD981E009DDE26 /* folder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +442,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#exit 0\n# this script was only possible because of Dustin Howetts epic theos project, thanks Dustin :)\n\n# we need to export this path because dpkg-deb is usually installed via macports\n\nexport PATH=/opt/local/bin:/opt/local/sbin:/usr/local/git:$PATH\nexport SRCROOT=\"$SRCROOT\"\nCODEROOT=\"$SRCROOT\"/\"$PRODUCT_NAME\"\nENT=\"$CODEROOT\"/ent.plist\n\necho $SRCROOT\necho $ENT\n#echo $SDKROOT\n\nBASE_SDK=`basename $SDKROOT`\nif [[ $BASE_SDK == *\"Simulator\"* ]]\nthen\nexit 0\nfi\n\n# only used if we SCP the deb over, and this only happens if dpkg-deb and fauxsu are installed\n\nATV_DEVICE_IP=4k.local\n\n# xcodes path to the the full application\n\nTARGET_BUILD_APPLICATION=\"$TARGET_BUILD_DIR\"/\"$PRODUCT_NAME\".$WRAPPER_EXTENSION\n\necho \"TARGET_BUILD_APPLICATION: $TARGET_BUILD_APPLICATION\"\n\n# our layout dir and control file\n\nLAYOUT=\"$CODEROOT\"/layout\nCONTROL_FILE=\"$LAYOUT\"/DEBIAN/control\n\n#echo $LAYOUT\n#echo $CONTROL_FILE\n\n# only needed if you have any mobile subtrate plugins involved, this may be taken care of by post scripts in theos, where its still the easiest to build ms tweaks\n\nSUBSTRATE_LAYOUT_PATH=\"$LAYOUT\"/Library/MobileSubstrate/DynamicLibraries\n\n# build directory for theos, we're still following his format and style as closely as possible\n\nDPKG_BUILD_PATH=\"$CODEROOT\"/_\n\n# DEBIAN location in the staging / build directory\n\nDPKG_DEBIAN_PATH=\"$DPKG_BUILD_PATH\"/DEBIAN\n\nAPPLETV_APPLICATION_FOLDER=\"$DPKG_BUILD_PATH/Applications\"\n\n# final application location in the staging directory\n\nFINAL_APP_PATH=\"$APPLETV_APPLICATION_FOLDER/$PRODUCT_NAME.$WRAPPER_EXTENSION\"\n\necho \"FINAL APP PATH: $FINAL_APP_PATH\"\n\n# paths for the applications\n\nmkdir -p \"$APPLETV_APPLICATION_FOLDER\"\n\n# make sure these are all there\n\nrm -rf \"$DPKG_BUILD_PATH\"\n\nmkdir -p \"$DPKG_BUILD_PATH\"\n\nmkdir -p \"$DPKG_DEBIAN_PATH\"\n\n# for this particular project we dont need this directory, but if you have ms tweaks involved you will want to comment this back in\n\n#mkdir -p $SUBSTRATE_LAYOUT_PATH\n\n# plucked from package.mk in theos/makesfiles lines 39-41 and adapted for shell/bash script\n\nCONTROL_PACKAGE_NAME=`cat \"$PRODUCT_NAME\"/layout/DEBIAN/control | grep \"^Package:\" | cut -d' ' -f2-`\nCONTROL_PACKAGE_ARCH=`cat \"$PRODUCT_NAME\"/layout/DEBIAN/control | grep \"^Architecture:\" | cut -d' ' -f2-`\nCONTROL_PACKAGE_BASE_VERSION=`cat \"$PRODUCT_NAME\"/layout/DEBIAN/control | grep \"^Version:\" | cut -d' ' -f2-`\n\n# i dont quite understand his fakeroot stuff so im just looking for a path to fauxsu\n\nFAUXSU_PATH=`which fakeroot`\n\n# we need dpkg-deb to make the package, this is the easiest way i can think of to find its location.\n\nDPKG_DEB_PATH=`which dpkg-deb`\n\n#CODE_SIGN_ENTITLEMENTS\n#EXECUTABLE_NAME\n\necho \"FINAL_APP_PATH: $FINAL_APP_PATH\"\necho \"CODE_SIGN_ENTITLEMENTS: $CODE_SIGN_ENTITLEMENTS\"\n\n#echo $FINAL_APP_PATH\n\n#for DYLIB in `find \"$FINAL_APP_PATH\" -name '*.dylib'`; do\n\n#echo $DYLIB\n\n#LDIDS=\"jtool --sign platform --ent $ENT $DYLIB --inplace\"\n\n#echo $LDIDS\n\n#jtool --sign platform --ent $ENT $DYLIB --inplace\n\n#done\n\nif [ -d \"$FINAL_APP_PATH/Frameworks\" ]; then\n\n    for FW in `find \"$FINAL_APP_PATH/Frameworks\" -name '*.framework'`; do\n\n\n    #name=${i%\\.*}\n\n    EXE=`plutil -extract CFBundleExecutable xml1  \"$FW\"/Info.plist -o - | grep \"<string>\" | sed 's/<*string>//g' | sed 's|</||'`\n\n    echo \"EXE: $EXE\"\n\n    LDIDS=\"jtool --sign platform --ent $ENT \"$FW/$EXE\" --inplace\"\n\n    echo $LDIDS\n\n    #ldid -S \"$FW/$EXE\"\n\n    jtool --sign platform --ent $ENT \"$FW/$EXE\" --inplace\n\n\n    #ldid -S $name\n\n    done\n\nfi\n\n#if [ -d \"$FINAL_APP_PATH/PlugIns\" ]; then\n\n#for PLUGIN in `find \"$FINAL_APP_PATH/PlugIns\" -name '*.appex'`; do\n\n#EXE=`plutil -extract CFBundleExecutable xml1  \"$PLUGIN\"/Info.plist -o - | grep \"<string>\" | sed 's/<*string>//g' | sed 's|</||'`\n\n\n#ldid -e \"$PLUGIN/$EXE\" > /tmp/ent.plist\n#cat /tmp/ent.plist\n#LDIDS=\"ldid -S/tmp/ent.plist $PLUGIN/$EXE\"\n#echo $LDIDS\n#ldid -S/tmp/ent.plist \"$PLUGIN/$EXE\"\n#rm /tmp/ent.plist\n\n#LDIDS=\"jtool --sign platform --ent $ENT \"$PLUGIN/$EXE\" --inplace\"\n#echo $LDIDS\n\n#jtool --sign platform --ent $ENT \"$PLUGIN/$EXE\" --inplace\n\n#done\n#fi\n#for INFO in `find \"$FINAL_APP_PATH\" -name 'Info.plist'`; do\n\n#EXE=`plutil -extract CFBundleExecutable xml1 \"$FINAL_APP_PATH/Info.plist\" -o - | grep \"<string>\" | sed 's/<*string>//g' | sed 's|</||'`\nset -e\n\n#EXE=$EXECUTABLE_NAME\n\n#echo \"EXE: $EXE\"\n\n#LDIDS=\"jtool --sign platform --ent $ENT $FINAL_APP_PATH/$EXE --inplace\"\n#LDIDS=\"/usr/local/bin/ldid -S$ENT $FINAL_APP_PATH/$EXE\"\n#echo $LDIDS\n#jtool --sign platform --ent $ENT $FINAL_APP_PATH/$EXE --inplace\n#$LDIDS\n#LDIDS=\"ldid -S/tmp/ent.plist $FINAL_APP_PATH/$EXE\"\n#echo $LDIDS\n#ldid -e \"$FINAL_APP_PATH/$EXE\" > /tmp/ent.plist\n#cat /tmp/ent.plist\n#ldid -S/tmp/ent.plist \"$FINAL_APP_PATH/$EXE\"\n#rm /tmp/ent.plist\n#done\n\n# plucked and modified from theos/makesfiles/pacakge.mk as well, 46 - 56 (im including the $FINAL_PACKAGE_DEBVERSION code further down as well)\n# the first rsync command is syncing the layout folder with the _ folder, the second is syncing the frappliance into its final staging destination\n\nrsync -a \"$LAYOUT\"/ \"$DPKG_BUILD_PATH\"/ --exclude \"_MTN\" --exclude \".git\" --exclude \".svn\" --exclude \".DS_Store\" --exclude \"._*\" --exclude \"/.Spotlight-V100\" --exclude \"/.Trashes\"\nrsync -a \"$TARGET_BUILD_APPLICATION\"/ \"$FINAL_APP_PATH\"/ --exclude \"_MTN\" --exclude \".git\" --exclude \".svn\" --exclude \".DS_Store\" --exclude \"._*\" --exclude \"/.Spotlight-V100\" --exclude \"/.Trashes\"\n\nEXE=$EXECUTABLE_NAME\n\necho \"EXE: $EXE\"\n\nLDIDS=\"jtool --sign platform --ent $ENT $FINAL_APP_PATH/$EXE --inplace\"\n#LDIDS=\"/usr/local/bin/ldid -S$ENT $FINAL_APP_PATH/$EXE\"\necho $LDIDS\n#jtool --sign platform --ent $ENT $FINAL_APP_PATH/$EXE --inplace\n$LDIDS\n\n\n# had to move SIZE down because the size would've been for the prior build and not the current because it was run before rsync steps, thanks again Dustin !!\n\nPWD=`pwd`\necho $PWD\n\nSIZE=`du -I DEBIAN -ks \"$PRODUCT_NAME\"/_ | cut -f 1`\n\necho $SIZE\n\n# package_v.sh is nearly identical to the one in theos/bin with basically one variable swapped with $SRCROOT, one line cant describe the awesomness of that script.\n\n# short and skinny it checks the base version of the layout control file and compares it against the .theos/packages/ folder information to find the next proper build number\n# and it writes a new control file with the proper Version: into the staging DEBIAN directory\n\n\"$CODEROOT\"/package_v.sh -c ${CONTROL_FILE} > \"$DPKG_DEBIAN_PATH\"/control\n\n# adding Installed-Size: to the final DEBIAN/control file\n\necho \"Installed-Size: $SIZE\" >> \"$DPKG_DEBIAN_PATH\"/control\n\n# pluck out this version we just slipped into the new control file for purposes of the end deb package name\n\nFINAL_PACKAGE_DEBVERSION=`cat \"$DPKG_DEBIAN_PATH\"/control | grep \"^Version:\"| cut -d' ' -f2`\n\n# the big enchirido, the full package name in all its glory\n\nFILENAME=\"$CONTROL_PACKAGE_NAME\"_\"$FINAL_PACKAGE_DEBVERSION\"_\"$CONTROL_PACKAGE_ARCH\".deb\n\necho \"$FILENAME\"\n\nif [ -f \"$DPKG_DEB_PATH\" ]; then\necho \"we have dpkg-deb too!\"\n\"$FAUXSU_PATH\" \"$DPKG_DEB_PATH\" -b \"$DPKG_BUILD_PATH\" \"$SRCROOT\"/\"$FILENAME\"\n\necho \"$FAUXSU_PATH\" \"$DPKG_DEB_PATH\" -b \"$DPKG_BUILD_PATH\" \"$SRCROOT\"/\"$FILENAME\"\n\n# these lines were plucked from the theos/bin/install.exec and theos/bin/install.copyFile\n\n# scp the deb over into ~\n\nscp -P 22 \"$SRCROOT\"/\"$FILENAME\" root@$ATV_DEVICE_IP:~\n\n# install the dpkg\n\nssh -p 22 root@$ATV_DEVICE_IP \"export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games ; /usr/bin/dpkg -i $FILENAME\"\n\n# run uicache\n\n#ssh -p 22 root@$ATV_DEVICE_IP \"/usr/bin/uicache2 -p /Applications/$PRODUCT_NAME.$WRAPPER_EXTENSION\"\n\nssh -p 22 root@$ATV_DEVICE_IP \"/usr/bin/uicache\"\n\nssh -p 22 root@$ATV_DEVICE_IP \"export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games ; lsdtrip launch com.nito.AirPhoto\"\n\n# done and done!\n\nelse # DPKG_DEB_PATH check\n\necho \"You need dpkg-deb installed to create the deb packages, homebrew is recommended for easiest and quickest installation!!\"\n\nfi\n\n\n\n";
+			shellScript = "#exit 0\n# this script was only possible because of Dustin Howetts epic theos project, thanks Dustin :)\n\n# we need to export this path because dpkg-deb is usually installed via macports\n\nexport PATH=/opt/local/bin:/opt/local/sbin:/usr/local/git:$PATH\nexport SRCROOT=\"$SRCROOT\"\nCODEROOT=\"$SRCROOT\"/\"$PRODUCT_NAME\"\nENT=\"$CODEROOT\"/ent.plist\n\necho $SRCROOT\necho $ENT\n#echo $SDKROOT\n\nBASE_SDK=`basename $SDKROOT`\nif [[ $BASE_SDK == *\"Simulator\"* ]]\nthen\nexit 0\nfi\n\n# only used if we SCP the deb over, and this only happens if dpkg-deb and fauxsu are installed\n\nATV_DEVICE_IP=4k.local\n\n# xcodes path to the the full application\n\nTARGET_BUILD_APPLICATION=\"$TARGET_BUILD_DIR\"/\"$PRODUCT_NAME\".$WRAPPER_EXTENSION\n\necho \"TARGET_BUILD_APPLICATION: $TARGET_BUILD_APPLICATION\"\n\n# our layout dir and control file\n\nLAYOUT=\"$CODEROOT\"/layout\nCONTROL_FILE=\"$LAYOUT\"/DEBIAN/control\n\n#echo $LAYOUT\n#echo $CONTROL_FILE\n\n# only needed if you have any mobile subtrate plugins involved, this may be taken care of by post scripts in theos, where its still the easiest to build ms tweaks\n\nSUBSTRATE_LAYOUT_PATH=\"$LAYOUT\"/Library/MobileSubstrate/DynamicLibraries\n\n# build directory for theos, we're still following his format and style as closely as possible\n\nDPKG_BUILD_PATH=\"$CODEROOT\"/_\n\n# DEBIAN location in the staging / build directory\n\nDPKG_DEBIAN_PATH=\"$DPKG_BUILD_PATH\"/DEBIAN\n\nAPPLETV_APPLICATION_FOLDER=\"$DPKG_BUILD_PATH/Applications\"\n\n# final application location in the staging directory\n\nFINAL_APP_PATH=\"$APPLETV_APPLICATION_FOLDER/$PRODUCT_NAME.$WRAPPER_EXTENSION\"\n\necho \"FINAL APP PATH: $FINAL_APP_PATH\"\n\n# paths for the applications\n\nmkdir -p \"$APPLETV_APPLICATION_FOLDER\"\n\n# make sure these are all there\n\nrm -rf \"$DPKG_BUILD_PATH\"\n\nmkdir -p \"$DPKG_BUILD_PATH\"\n\nmkdir -p \"$DPKG_DEBIAN_PATH\"\n\n# for this particular project we dont need this directory, but if you have ms tweaks involved you will want to comment this back in\n\n#mkdir -p $SUBSTRATE_LAYOUT_PATH\n\n# plucked from package.mk in theos/makesfiles lines 39-41 and adapted for shell/bash script\n\nCONTROL_PACKAGE_NAME=`cat \"$PRODUCT_NAME\"/layout/DEBIAN/control | grep \"^Package:\" | cut -d' ' -f2-`\nCONTROL_PACKAGE_ARCH=`cat \"$PRODUCT_NAME\"/layout/DEBIAN/control | grep \"^Architecture:\" | cut -d' ' -f2-`\nCONTROL_PACKAGE_BASE_VERSION=`cat \"$PRODUCT_NAME\"/layout/DEBIAN/control | grep \"^Version:\" | cut -d' ' -f2-`\n\n# i dont quite understand his fakeroot stuff so im just looking for a path to fauxsu\n\nFAUXSU_PATH=`which fakeroot`\n\n# we need dpkg-deb to make the package, this is the easiest way i can think of to find its location.\n\nDPKG_DEB_PATH=`which dpkg-deb`\n\n#CODE_SIGN_ENTITLEMENTS\n#EXECUTABLE_NAME\n\necho \"FINAL_APP_PATH: $FINAL_APP_PATH\"\necho \"CODE_SIGN_ENTITLEMENTS: $CODE_SIGN_ENTITLEMENTS\"\n\n#echo $FINAL_APP_PATH\n\n#for DYLIB in `find \"$FINAL_APP_PATH\" -name '*.dylib'`; do\n\n#echo $DYLIB\n\n#LDIDS=\"jtool --sign platform --ent $ENT $DYLIB --inplace\"\n\n#echo $LDIDS\n\n#jtool --sign platform --ent $ENT $DYLIB --inplace\n\n#done\n\nif [ -d \"$FINAL_APP_PATH/Frameworks\" ]; then\n\n    for FW in `find \"$FINAL_APP_PATH/Frameworks\" -name '*.framework'`; do\n\n\n    #name=${i%\\.*}\n\n    EXE=`plutil -extract CFBundleExecutable xml1  \"$FW\"/Info.plist -o - | grep \"<string>\" | sed 's/<*string>//g' | sed 's|</||'`\n\n    echo \"EXE: $EXE\"\n\n    LDIDS=\"jtool --sign platform --ent $ENT \"$FW/$EXE\" --inplace\"\n\n    echo $LDIDS\n\n    #ldid -S \"$FW/$EXE\"\n\n    jtool --sign platform --ent $ENT \"$FW/$EXE\" --inplace\n\n\n    #ldid -S $name\n\n    done\n\nfi\n\n#if [ -d \"$FINAL_APP_PATH/PlugIns\" ]; then\n\n#for PLUGIN in `find \"$FINAL_APP_PATH/PlugIns\" -name '*.appex'`; do\n\n#EXE=`plutil -extract CFBundleExecutable xml1  \"$PLUGIN\"/Info.plist -o - | grep \"<string>\" | sed 's/<*string>//g' | sed 's|</||'`\n\n\n#ldid -e \"$PLUGIN/$EXE\" > /tmp/ent.plist\n#cat /tmp/ent.plist\n#LDIDS=\"ldid -S/tmp/ent.plist $PLUGIN/$EXE\"\n#echo $LDIDS\n#ldid -S/tmp/ent.plist \"$PLUGIN/$EXE\"\n#rm /tmp/ent.plist\n\n#LDIDS=\"jtool --sign platform --ent $ENT \"$PLUGIN/$EXE\" --inplace\"\n#echo $LDIDS\n\n#jtool --sign platform --ent $ENT \"$PLUGIN/$EXE\" --inplace\n\n#done\n#fi\n#for INFO in `find \"$FINAL_APP_PATH\" -name 'Info.plist'`; do\n\n#EXE=`plutil -extract CFBundleExecutable xml1 \"$FINAL_APP_PATH/Info.plist\" -o - | grep \"<string>\" | sed 's/<*string>//g' | sed 's|</||'`\nset -e\n\n#EXE=$EXECUTABLE_NAME\n\n#echo \"EXE: $EXE\"\n\n#LDIDS=\"jtool --sign platform --ent $ENT $FINAL_APP_PATH/$EXE --inplace\"\n#LDIDS=\"/usr/local/bin/ldid -S$ENT $FINAL_APP_PATH/$EXE\"\n#echo $LDIDS\n#jtool --sign platform --ent $ENT $FINAL_APP_PATH/$EXE --inplace\n#$LDIDS\n#LDIDS=\"ldid -S/tmp/ent.plist $FINAL_APP_PATH/$EXE\"\n#echo $LDIDS\n#ldid -e \"$FINAL_APP_PATH/$EXE\" > /tmp/ent.plist\n#cat /tmp/ent.plist\n#ldid -S/tmp/ent.plist \"$FINAL_APP_PATH/$EXE\"\n#rm /tmp/ent.plist\n#done\n\n# plucked and modified from theos/makesfiles/pacakge.mk as well, 46 - 56 (im including the $FINAL_PACKAGE_DEBVERSION code further down as well)\n# the first rsync command is syncing the layout folder with the _ folder, the second is syncing the frappliance into its final staging destination\n\nrsync -a \"$LAYOUT\"/ \"$DPKG_BUILD_PATH\"/ --exclude \"_MTN\" --exclude \".git\" --exclude \".svn\" --exclude \".DS_Store\" --exclude \"._*\" --exclude \"/.Spotlight-V100\" --exclude \"/.Trashes\"\nrsync -a \"$TARGET_BUILD_APPLICATION\"/ \"$FINAL_APP_PATH\"/ --exclude \"_MTN\" --exclude \".git\" --exclude \".svn\" --exclude \".DS_Store\" --exclude \"._*\" --exclude \"/.Spotlight-V100\" --exclude \"/.Trashes\"\n\nEXE=$EXECUTABLE_NAME\n\necho \"EXE: $EXE\"\n\nLDIDS=\"jtool --sign platform --ent $ENT $FINAL_APP_PATH/$EXE --inplace\"\n#LDIDS=\"/usr/local/bin/ldid -S$ENT $FINAL_APP_PATH/$EXE\"\necho $LDIDS\n#jtool --sign platform --ent $ENT $FINAL_APP_PATH/$EXE --inplace\n$LDIDS\n\n\n# had to move SIZE down because the size would've been for the prior build and not the current because it was run before rsync steps, thanks again Dustin !!\n\nPWD=`pwd`\necho $PWD\n\nSIZE=`du -I DEBIAN -ks \"$PRODUCT_NAME\"/_ | cut -f 1`\n\necho $SIZE\n\n# package_v.sh is nearly identical to the one in theos/bin with basically one variable swapped with $SRCROOT, one line cant describe the awesomness of that script.\n\n# short and skinny it checks the base version of the layout control file and compares it against the .theos/packages/ folder information to find the next proper build number\n# and it writes a new control file with the proper Version: into the staging DEBIAN directory\n\n\"$CODEROOT\"/package_v.sh -c ${CONTROL_FILE} > \"$DPKG_DEBIAN_PATH\"/control\n\n# adding Installed-Size: to the final DEBIAN/control file\n\necho \"Installed-Size: $SIZE\" >> \"$DPKG_DEBIAN_PATH\"/control\n\n# pluck out this version we just slipped into the new control file for purposes of the end deb package name\n\nFINAL_PACKAGE_DEBVERSION=`cat \"$DPKG_DEBIAN_PATH\"/control | grep \"^Version:\"| cut -d' ' -f2`\n\n# the big enchirido, the full package name in all its glory\n\nFILENAME=\"$CONTROL_PACKAGE_NAME\"_\"$FINAL_PACKAGE_DEBVERSION\"_\"$CONTROL_PACKAGE_ARCH\".deb\n\necho \"$FILENAME\"\n\nif [ -f \"$DPKG_DEB_PATH\" ]; then\necho \"we have dpkg-deb too!\"\n\"$FAUXSU_PATH\" \"$DPKG_DEB_PATH\" -b \"$DPKG_BUILD_PATH\" \"$SRCROOT/packages/$FILENAME\"\n\necho \"$FAUXSU_PATH\" \"$DPKG_DEB_PATH\" -b \"$DPKG_BUILD_PATH\" \"$SRCROOT/packages/$FILENAME\"\n\n# these lines were plucked from the theos/bin/install.exec and theos/bin/install.copyFile\n\n# scp the deb over into ~\n\nscp -P 22 \"$SRCROOT/packages/$FILENAME\" root@$ATV_DEVICE_IP:~\n\n# install the dpkg\n\nssh -p 22 root@$ATV_DEVICE_IP \"export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games ; /usr/bin/dpkg -i $FILENAME\"\n\n# run uicache\n\n#ssh -p 22 root@$ATV_DEVICE_IP \"/usr/bin/uicache2 -p /Applications/$PRODUCT_NAME.$WRAPPER_EXTENSION\"\n\nssh -p 22 root@$ATV_DEVICE_IP \"/usr/bin/uicache\"\n\nssh -p 22 root@$ATV_DEVICE_IP \"export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games ; lsdtrip launch com.nito.AirPhoto\"\n\n# done and done!\n\nelse # DPKG_DEB_PATH check\n\necho \"You need dpkg-deb installed to create the deb packages, homebrew is recommended for easiest and quickest installation!!\"\n\nfi\n\n\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -212,17 +451,48 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				328495C723BD8EAC009DDE26 /* SDWebImageDecoder.m in Sources */,
+				328495D223BD8EAC009DDE26 /* UIView+WebCacheOperation.m in Sources */,
 				32BD495923B641F900BE295F /* CXBrowserNavBarView.m in Sources */,
+				328495CA23BD8EAC009DDE26 /* SDWebImageManager.m in Sources */,
 				32BD493823B641D800BE295F /* ViewController.m in Sources */,
 				32BD495E23B641F900BE295F /* CXTapDetectingImageView.m in Sources */,
+				328495BD23BD8EAC009DDE26 /* SettingsViewController.m in Sources */,
+				328495D523BD8EAC009DDE26 /* SVRadialGradientLayer.m in Sources */,
+				328495C623BD8EAC009DDE26 /* SDWebImageCompat.m in Sources */,
+				328495C923BD8EAC009DDE26 /* SDWebImageDownloaderOperation.m in Sources */,
+				328495BF23BD8EAC009DDE26 /* NSArray+PureLayout.m in Sources */,
 				32BD495C23B641F900BE295F /* CXPhotoBrowser.m in Sources */,
+				328495D123BD8EAC009DDE26 /* UIImageView+WebCache.m in Sources */,
 				32BD496023B641F900BE295F /* CXZoomingScrollView.m in Sources */,
 				32BD494023B641DB00BE295F /* main.m in Sources */,
 				32BD495F23B641F900BE295F /* CXTapDetectingView.m in Sources */,
+				328495D023BD8EAC009DDE26 /* UIImageView+HighlightedWebCache.m in Sources */,
+				328495BC23BD8EAC009DDE26 /* MetadataPreviewView.m in Sources */,
+				328495C323BD8EAC009DDE26 /* NSData+ImageContentType.m in Sources */,
 				32BD495A23B641F900BE295F /* CXBrowserToolBarView.m in Sources */,
+				328495CD23BD8EAC009DDE26 /* UIImage+GIF.m in Sources */,
+				328495CE23BD8EAC009DDE26 /* UIImage+MultiFormat.m in Sources */,
 				32BD495D23B641F900BE295F /* CXPhotoLoadingView.m in Sources */,
+				328495CF23BD8EAC009DDE26 /* UIImage+WebP.m in Sources */,
+				328495D423BD8EAC009DDE26 /* SVProgressHUD.m in Sources */,
+				328495CB23BD8EAC009DDE26 /* SDWebImagePrefetcher.m in Sources */,
+				328495B923BD8EAC009DDE26 /* UIViewController+Additions.m in Sources */,
+				328495B623BD8EAC009DDE26 /* NSObject+Additions.m in Sources */,
+				328495C023BD8EAC009DDE26 /* NSLayoutConstraint+PureLayout.m in Sources */,
+				328495C123BD8EAC009DDE26 /* FLAnimatedImageView+WebCache.m in Sources */,
+				328495B823BD8EAC009DDE26 /* UIView+RecursiveFind.m in Sources */,
+				328495C223BD8EAC009DDE26 /* MKAnnotationView+WebCache.m in Sources */,
+				328495C823BD8EAC009DDE26 /* SDWebImageDownloader.m in Sources */,
+				328495CC23BD8EAC009DDE26 /* UIButton+WebCache.m in Sources */,
+				328495C423BD8EAC009DDE26 /* NSImage+WebCache.m in Sources */,
 				32BD493523B641D800BE295F /* AppDelegate.m in Sources */,
 				32BD495B23B641F900BE295F /* CXPhoto.m in Sources */,
+				328495D323BD8EAC009DDE26 /* SVIndefiniteAnimatedView.m in Sources */,
+				328495BE23BD8EAC009DDE26 /* ALView+PureLayout.m in Sources */,
+				328495C523BD8EAC009DDE26 /* SDImageCache.m in Sources */,
+				328495B723BD8EAC009DDE26 /* UIColor+Additions.m in Sources */,
+				328495BA23BD8EAC009DDE26 /* UIWindow+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +627,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9EUFEA5U7G;
+				HEADER_SEARCH_PATHS = "$SRCROOT/**";
 				INFOPLIST_FILE = AirPhoto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -375,6 +646,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9EUFEA5U7G;
+				HEADER_SEARCH_PATHS = "$SRCROOT/**";
 				INFOPLIST_FILE = AirPhoto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

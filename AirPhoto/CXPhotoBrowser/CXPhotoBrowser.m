@@ -263,7 +263,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     */
 	// Super
 	[super viewWillDisappear:animated];
-    exit(0);
+   // exit(0);
 }
 
 - (void)viewDidAppear:(BOOL)animated {

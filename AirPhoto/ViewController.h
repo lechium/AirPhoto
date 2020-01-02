@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "CXPhotoBrowser.h"
+#import "SettingsViewController.h"
+#import "NSObject+Additions.h"
 
-@interface ViewController : UIViewController <CXPhotoBrowserDelegate, CXPhotoBrowserDataSource>
+#define LOG_SELF        NSLog(@"%@ %@", self, NSStringFromSelector(_cmd))
+
+@interface ViewController : SettingsViewController <CXPhotoBrowserDelegate, CXPhotoBrowserDataSource>
 
 - (id)initWithArray:(NSArray <NSString *> *)inputPhotos;
 - (void)processPhotos:(NSArray <NSString *> *)input;
 - (void)showPhotoBrowserAtIndex:(NSInteger)index;
+- (id)initWithDirectory:(NSString *)directory;
 @end
 
