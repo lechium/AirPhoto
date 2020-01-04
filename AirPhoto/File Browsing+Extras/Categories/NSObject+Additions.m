@@ -46,7 +46,11 @@
 
 - (NSString *)ourCacheFolder {
     NSString *caches = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSLocalDomainMask, YES)[0];
-    return [caches stringByAppendingPathComponent:[[NSBundle mainBundle] bundleIdentifier]];
+    NSString *theFolder = [caches stringByAppendingPathComponent:[[NSBundle mainBundle] bundleIdentifier]];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:theFolder]){
+        [[NSFileManager defaultManager] createDirectoryAtPath:theFolder withIntermediateDirectories:TRUE attributes:nil error:nil];
+    }
+    return theFolder;
 }
 
 

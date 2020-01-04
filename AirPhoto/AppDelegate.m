@@ -121,12 +121,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+
     [self _storeAppIcon];
-    NSString *caches = [self ourCacheFolder];
-    NSString *adFile = [caches stringByAppendingPathComponent:@"AirDrop.plist"];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:adFile]){
-        [self handleLegacyAirdropFile:adFile];
-    }
+
     return YES;
 }
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
@@ -157,6 +154,11 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    NSString *caches = [self ourCacheFolder];
+    NSString *adFile = [caches stringByAppendingPathComponent:@"AirDrop.plist"];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:adFile]){
+        [self handleLegacyAirdropFile:adFile];
+    }
 }
 
 
