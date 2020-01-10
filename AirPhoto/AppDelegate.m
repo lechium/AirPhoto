@@ -11,9 +11,8 @@
 #import "UIViewController+Additions.h"
 #import "SDWebImageManager.h"
 
-@interface LSApplicationProxy: NSObject
-+(id)applicationProxyForIdentifier:(id)arg1 ;
-- (UIImage *)tv_applicationFlatIcon;
+@interface UIImage (Private)
++ (UIImage *)_applicationIconImageForBundleIdentifier:(NSString *)bundleIdentifier format:(int)format scale:(CGFloat)scale;
 @end
 
 @interface AppDelegate (){
@@ -26,11 +25,12 @@
 - (void)_storeAppIcon {
     __block UIImage *currentImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:@"AppIcon"];
     if (currentImage == nil){
-        [[NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/TVKit.framework/"] load];
-        id proxy = [LSApplicationProxy applicationProxyForIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
+        currentImage = [UIImage _applicationIconImageForBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier] format:0 scale:0];
+        //[[NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/TVKit.framework/"] load];
+        //id proxy = [LSApplicationProxy applicationProxyForIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
         //_ourIcon = [proxy tv_applicationFlatIcon];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            currentImage = [proxy tv_applicationFlatIcon];
+            //currentImage = [proxy tv_applicationFlatIcon];
             [[SDImageCache sharedImageCache] storeImage:currentImage forKey:@"AppIcon"];
         });
     }
@@ -85,6 +85,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+//     [[SDImageCache sharedImageCache] cleanDisk];
+//     [[SDImageCache sharedImageCache] clearMemory];
+     
+
     [self _storeAppIcon];
     return YES;
 }
@@ -92,7 +97,7 @@
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
 {
     NSLog(@"[AirPhoto] app: %@ app openURL: %@ url, options: %@", app, url, options);
-    //NSLog(@"options: %@", options);
+    NSLog(@"[AirPhoto] options: %@", options);
     [self handleAirdroppedFile:url.path options:options[UIApplicationOpenURLOptionsAnnotationKey]];
     return YES;
 }

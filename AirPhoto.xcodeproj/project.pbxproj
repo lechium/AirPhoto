@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3273927923C03FDA006BEC99 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3273927823C03FDA006BEC99 /* MobileCoreServices.framework */; };
 		328495B623BD8EAC009DDE26 /* NSObject+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284956F23BD8EAC009DDE26 /* NSObject+Additions.m */; };
 		328495B723BD8EAC009DDE26 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284957123BD8EAC009DDE26 /* UIColor+Additions.m */; };
 		328495B823BD8EAC009DDE26 /* UIView+RecursiveFind.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284957323BD8EAC009DDE26 /* UIView+RecursiveFind.m */; };
@@ -175,7 +174,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3273927923C03FDA006BEC99 /* MobileCoreServices.framework in Frameworks */,
 				328495EA23BDB42C009DDE26 /* MediaRemote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
