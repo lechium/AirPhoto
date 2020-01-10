@@ -98,7 +98,7 @@
 
 - (NSArray *)approvedExtensions {
     
-    return @[@"jpg", @"jpeg", @"png", @"gif", @"pct"];
+    return @[@"jpg", @"jpeg", @"png", @"gif", @"pct", @"tiff", @"tif"];
     
 }
 
