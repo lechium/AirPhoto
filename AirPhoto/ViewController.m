@@ -24,7 +24,7 @@
     self.view.alpha = 1;
     
     if (self.currentPath == nil){
-        self.currentPath = [self ourCacheFolder];
+        self.currentPath = [self photosPath];
     }
     self.items = [self currentItems];
     self.title = self.currentPath.lastPathComponent;
@@ -219,9 +219,12 @@
 
 - (void)showPhotoBrowserAtIndex:(NSInteger)index {
     
+    
     CXPhotoBrowser *photoBrowser = [[CXPhotoBrowser alloc] initWithDataSource:self delegate:self];
+    //UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:photoBrowser];
     [photoBrowser setInitialPageIndex:index];
-    [self presentViewController:photoBrowser animated:YES completion:nil];
+    [self.navigationController pushViewController:photoBrowser animated:true];
+    //[self presentViewController:photoBrowser animated:YES completion:nil];
     [photoBrowser playbackPhotos];
     
 }

@@ -62,6 +62,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		321811C8256CCFEB0003B576 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		3273927823C03FDA006BEC99 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3284956B23BD5FF2009DDE26 /* ent.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ent.plist; sourceTree = "<group>"; };
 		3284956E23BD8EAC009DDE26 /* NSObject+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Additions.h"; sourceTree = "<group>"; };
@@ -315,6 +316,7 @@
 		32BD492723B641D800BE295F = {
 			isa = PBXGroup;
 			children = (
+				321811C8256CCFEB0003B576 /* PrefixHeader.pch */,
 				32BD493223B641D800BE295F /* AirPhoto */,
 				32BD493123B641D800BE295F /* Products */,
 				328495E823BDB42C009DDE26 /* Frameworks */,
@@ -657,6 +659,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = $SRCROOT/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = "$SRCROOT/**";
 				INFOPLIST_FILE = AirPhoto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -680,6 +684,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = $SRCROOT/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = "$SRCROOT/**";
 				INFOPLIST_FILE = AirPhoto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

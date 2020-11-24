@@ -8,8 +8,10 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import <UIKit/UIKit.h>
 #import "UIViewController+Additions.h"
 #import "SDWebImageManager.h"
+
 
 @interface UIImage (Private)
 + (UIImage *)_applicationIconImageForBundleIdentifier:(NSString *)bundleIdentifier format:(int)format scale:(CGFloat)scale;

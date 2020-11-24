@@ -45,9 +45,10 @@
 #pragma mark - 
 - (void)setup
 {
-    self.userInteractionEnabled = YES;
+    return;
+    //self.userInteractionEnabled = YES;
     UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureAction:)];
-    [longPressGesture setNumberOfTouchesRequired:1];
+    //[longPressGesture setNumberOfTouchesRequired:1];
     [longPressGesture setMinimumPressDuration:1.0f];
     [self addGestureRecognizer:longPressGesture];
 }
@@ -77,10 +78,12 @@
 	if ([tapDelegate respondsToSelector:@selector(imageView:tripleTapDetected:)])
 		[tapDelegate imageView:self tripleTapDetected:touch];
 }
+/*
 
 #pragma mark - Touched
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    NSLog(@"touchesEnded");
 	UITouch *touch = [touches anyObject];
 	NSUInteger tapCount = touch.tapCount;
 	switch (tapCount) {
@@ -98,6 +101,6 @@
 	}
 	[[self nextResponder] touchesEnded:touches withEvent:event];
 }
-
+*/
 
 @end

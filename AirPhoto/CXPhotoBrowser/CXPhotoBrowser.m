@@ -16,6 +16,25 @@
 #define PAGE_INDEX_TAG_OFFSET   1000
 #define PAGE_INDEX(page)        ([(page) tag] - PAGE_INDEX_TAG_OFFSET)
 
+@interface SampleScrollView: UIScrollView
+@end
+
+@implementation SampleScrollView
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveEvent:(UIEvent *)event {
+    //NSLog(@"gestureRecognizer: %@ shouldReceiveEvent: %@", gestureRecognizer, event);
+    return TRUE;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceivePress:(UIPress *)press {
+    
+    NSLog(@"gestureRecognizer: %@ shouldReceivePress: %@", gestureRecognizer, press);
+    return TRUE;
+    //return [super gestureRecognizer:gestureRecognizer shouldReceivePress:press];
+}
+
+@end
+
 @interface CXBrowserNavBarView ()
 - (void)assignPhotoBrowser:(CXPhotoBrowser *)browser;
 @end;
@@ -33,12 +52,12 @@
     NSMutableArray *_photos;
     NSTimer *_playbackTimer;
     // Views
-	UIScrollView *_pagingScrollView; //container
+    SampleScrollView *_pagingScrollView; //container
     
     // Paging
-	NSMutableSet *_visiblePages, *_recycledPages;
-	NSUInteger _currentPageIndex;
-	NSUInteger _pageIndexBeforeRotation;
+    NSMutableSet *_visiblePages, *_recycledPages;
+    NSUInteger _currentPageIndex;
+    NSUInteger _pageIndexBeforeRotation;
     NSTimer *_scrollDetectingTimer;
     
     //Previous
@@ -51,7 +70,7 @@
     
     //flags
     BOOL _performingLayout;
-	BOOL _rotating;
+    BOOL _rotating;
     BOOL _viewIsActive;
     BOOL _didSavePreviousStateOfNavBar;
     BOOL _shouldUseDefaultUINavigationBar;
@@ -135,9 +154,9 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     if (self)
     {
         //self.wantsFullScreenLayout = YES;
-        self.hidesBottomBarWhenPushed = YES;
+        //self.hidesBottomBarWhenPushed = YES;
         _performingLayout = NO; // Reset on view did appear
-		_rotating = NO;
+        _rotating = NO;
         _viewIsActive = NO;
         _scrolling = NO;
         _didSavePreviousStateOfNavBar = NO;
@@ -183,60 +202,117 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     return self;
 }
 
+- (void)menuTapped:(id)sender {
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    NSLog(@"gestureRecognizerShouldBegin: %@", gestureRecognizer);
+    return true;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    NSLog(@"shouldRecognizeSimultaneouslyWithGestureRecognizer: %@", gestureRecognizer);
+    return TRUE;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRequireFailureOfGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    NSLog(@"shouldRequireFailureOfGestureRecognizer: %@", gestureRecognizer);
+    return FALSE;
+}
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer  {
+    NSLog(@"shouldBeRequiredToFailByGestureRecognizer: %@", gestureRecognizer);
+    return FALSE;
+}
+
+// called before touchesBegan:withEvent: is called on the gesture recognizer for a new touch. return NO to prevent the gesture recognizer from seeing this touch
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    NSLog(@"shouldReceiveTouch: %@", gestureRecognizer);
+    return TRUE;
+}
+
+// called before pressesBegan:withEvent: is called on the gesture recognizer for a new press. return NO to prevent the gesture recognizer from seeing this press
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceivePress:(UIPress *)press {
+    NSLog(@"shouldReceivePress: %@", gestureRecognizer);
+    return TRUE;
+}
+
+// called once before either -gestureRecognizer:shouldReceiveTouch: or -gestureRecognizer:shouldReceivePress:
+// return NO to prevent the gesture recognizer from seeing this event
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveEvent:(UIEvent *)event {
+    NSLog(@"shouldReceiveEvent: %@", gestureRecognizer);
+    return TRUE;
+}
+
 #pragma mark - Lifecycle
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     // View
-	self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor blackColor];
     
     // Setup paging scrolling view
-	CGRect pagingScrollViewFrame = [self frameForPagingScrollView];
-	_pagingScrollView = [[UIScrollView alloc] initWithFrame:pagingScrollViewFrame];
-	_pagingScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	_pagingScrollView.pagingEnabled = YES;
-	_pagingScrollView.delegate = self;
-	_pagingScrollView.showsHorizontalScrollIndicator = NO;
-	_pagingScrollView.showsVerticalScrollIndicator = NO;
-	_pagingScrollView.backgroundColor = [UIColor blackColor];
+    
+    UITapGestureRecognizer *menuRecog = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(menuTapped:)];
+    menuRecog.allowedPressTypes = @[@(UIPressTypePlayPause)];
+    menuRecog.delegate = self;
+    CGRect pagingScrollViewFrame = [self frameForPagingScrollView];
+    _pagingScrollView = [[SampleScrollView alloc] initWithFrame:pagingScrollViewFrame];
+    _pagingScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    //_pagingScrollView.pagingEnabled = YES;
+    _pagingScrollView.delegate = self;
+    _pagingScrollView.alwaysBounceVertical = false;
+    _pagingScrollView.alwaysBounceHorizontal = false;
+    _pagingScrollView.bounces = false;
+    _pagingScrollView.showsHorizontalScrollIndicator = NO;
+    _pagingScrollView.showsVerticalScrollIndicator = NO;
+    _pagingScrollView.backgroundColor = [UIColor blackColor];
     _pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
+    //_pagingScrollView.automaticallyAdjustsScrollIndicatorInsets = false;
+    _pagingScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    _pagingScrollView.directionalLockEnabled = true;
+    [_pagingScrollView addGestureRecognizer:menuRecog];
     _pagingScrollView.panGestureRecognizer.allowedTouchTypes = @[@(UITouchTypeIndirect)];
-    _playbackState = CXBrowserPlaybackStateUnknown;
-	[self.view addSubview:_pagingScrollView];
-
-    [super viewDidLoad];
+    //_playbackState = CXBrowserPlaybackStateStopped;
+    [self.view addSubview:_pagingScrollView];
+    
+    
     /*
-    MRMediaRemoteGetNowPlayingInfo(dispatch_get_main_queue(), ^(CFDictionaryRef info) {
-        //NSLog(@"We got the information: %@", info);
-        
-        //This key may not be available, if its is not, we defer to ignoring the alert.
-        NSString *mediaType = [(NSDictionary *)CFBridgingRelease(info) valueForKey:@"kMRMediaRemoteNowPlayingInfoMediaType"];
-        
-        if (info != nil){
-            if ([mediaType containsString:@"Music"]){
-                self->_wasPlayingBack = true;
-            } else {
-                self->_wasPlayingBack = false;
-            }
-            
-        } else { //info is null, nothing is currently playing, call original implementation.
-            self->_wasPlayingBack = false;
-        }
-        
-    });
+     MRMediaRemoteGetNowPlayingInfo(dispatch_get_main_queue(), ^(CFDictionaryRef info) {
+     //NSLog(@"We got the information: %@", info);
+     
+     //This key may not be available, if its is not, we defer to ignoring the alert.
+     NSString *mediaType = [(NSDictionary *)CFBridgingRelease(info) valueForKey:@"kMRMediaRemoteNowPlayingInfoMediaType"];
+     
+     if (info != nil){
+     if ([mediaType containsString:@"Music"]){
+     self->_wasPlayingBack = true;
+     } else {
+     self->_wasPlayingBack = false;
+     }
+     
+     } else { //info is null, nothing is currently playing, call original implementation.
+     self->_wasPlayingBack = false;
+     }
+     
+     });
      */
+}
+- (void)pressesCancelled:(NSSet<UIPress *> *)presses withEvent:(nullable UIPressesEvent *)event {
+    [super pressesCancelled:presses withEvent:event];
 }
 
 - (void)pressesBegan:(NSSet<UIPress *> *)presses withEvent:(UIPressesEvent *)event
 {
     //LOG_SELF;
-    NSLog(@"pressesBegan: %@", presses);
     
     for (UIPress *press in presses)
     {
         if (press.type == UIPressTypePlayPause || press.type == UIPressTypeSelect)
         {
-            NSLog(@"bro...");
-            [self togglePlaybackState];
+            //NSLog(@"bro...");
+            //[self togglePlaybackState];
+        } else if (press.type == UIPressTypeMenu){
+            //[self dismissViewControllerAnimated:true completion:nil];
         } else {
             [super pressesBegan:presses withEvent:event];
         }
@@ -248,14 +324,15 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 - (void)pressesEnded:(NSSet<UIPress *> *)presses withEvent:(UIPressesEvent *)event
 {
     //LOG_SELF;
-    NSLog(@"pressesEnded: %@", presses);
     
     for (UIPress *press in presses)
     {
         if (press.type == UIPressTypePlayPause)
         {
-            NSLog(@"toggle state?");
-           // [self togglePlaybackState];
+            // NSLog(@"toggle state?");
+            [self togglePlaybackState];
+        } else if (press.type == UIPressTypeMenu){
+            [self dismissViewControllerAnimated:true completion:nil];
         } else {
             [super pressesEnded:presses withEvent:event];
         }
@@ -263,7 +340,6 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 }
 
 - (void)pausePlayback {
-    
     if (self.playbackState == CXBrowserPlaybackStatePlaying){
         if (_playbackTimer != nil){
             [_playbackTimer invalidate];
@@ -301,33 +377,29 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    /*
-    if (self.wantsFullScreenLayout && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-    {
-        _previousStatusBarStyle = [[UIApplication sharedApplication] statusBarStyle];
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:animated];
-    }
-    */
+    
+    
     [browserNavigationBarView removeFromSuperview];
     //Setup navigationbar view
     _shouldUseDefaultUINavigationBar = [self shouldUseDefaultUINavigationBar];
     if (!_shouldUseDefaultUINavigationBar)
     {
         //[self resetCustomlizeBrowserNavigationBarView];
-        [self.view addSubview:browserNavigationBarView];
+        // [self.view addSubview:browserNavigationBarView];
     }
     
     //Set up tool view
     //[self resetCustomlizeBrowserToolBarView];
-    [self.view addSubview:browserToolBarView];
+    //[self.view addSubview:browserToolBarView];
     
     // Update
     [self reloadData];
-    
-    if (!_viewIsActive && [self.navigationController.viewControllers objectAtIndex:0] != self) {
-        [self storePreviousNavBarAppearance];
-    }
-    [self setNavBarAppearance:animated];
+    /*
+     if (!_viewIsActive && [self.navigationController.viewControllers objectAtIndex:0] != self) {
+     [self storePreviousNavBarAppearance];
+     }
+     [self setNavBarAppearance:animated];
+     */
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -357,14 +429,14 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     [self setToolBarViewsHidden:NO animated:NO];
     
     /*
-    // Status bar
-    if (self.wantsFullScreenLayout && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        [[UIApplication sharedApplication] setStatusBarStyle:_previousStatusBarStyle animated:animated];
-    }
-    */
-	// Super
-	[super viewWillDisappear:animated];
-   // exit(0);
+     // Status bar
+     if (self.wantsFullScreenLayout && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+     [[UIApplication sharedApplication] setStatusBarStyle:_previousStatusBarStyle animated:animated];
+     }
+     */
+    // Super
+    [super viewWillDisappear:animated];
+    // exit(0);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -376,36 +448,36 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     
     // Super
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5")) [super viewWillLayoutSubviews];
-	
-	// Flag
-	_performingLayout = YES;
-	
-	// Remember index
-	NSUInteger indexPriorToLayout = _currentPageIndex;
-	
-	// Get paging scroll view frame to determine if anything needs changing
-	CGRect pagingScrollViewFrame = [self frameForPagingScrollView];
     
-	// Frame needs changing
-	_pagingScrollView.frame = pagingScrollViewFrame;
-	
-	// Recalculate contentSize based on current orientation
-	_pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
-	
-	// Adjust frames and configuration of each visible page
-	for (CXZoomingScrollView *page in _visiblePages) {
+    // Flag
+    _performingLayout = YES;
+    
+    // Remember index
+    NSUInteger indexPriorToLayout = _currentPageIndex;
+    
+    // Get paging scroll view frame to determine if anything needs changing
+    CGRect pagingScrollViewFrame = [self frameForPagingScrollView];
+    
+    // Frame needs changing
+    _pagingScrollView.frame = pagingScrollViewFrame;
+    
+    // Recalculate contentSize based on current orientation
+    _pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
+    
+    // Adjust frames and configuration of each visible page
+    for (CXZoomingScrollView *page in _visiblePages) {
         NSUInteger index = PAGE_INDEX(page);
-		page.frame = [self frameForPageAtIndex:index];
-		[page setMaxMinZoomScalesForCurrentBounds];
-	}
-	
-	// Adjust contentOffset to preserve page location based on values collected prior to location
-	_pagingScrollView.contentOffset = [self contentOffsetForPageAtIndex:indexPriorToLayout];
-	[self didStartViewingPageAtIndex:_currentPageIndex]; // initial
+        page.frame = [self frameForPageAtIndex:index];
+        [page setMaxMinZoomScalesForCurrentBounds];
+    }
     
-	// Reset
-	_currentPageIndex = indexPriorToLayout;
-	_performingLayout = NO;
+    // Adjust contentOffset to preserve page location based on values collected prior to location
+    _pagingScrollView.contentOffset = [self contentOffsetForPageAtIndex:indexPriorToLayout];
+    [self didStartViewingPageAtIndex:_currentPageIndex]; // initial
+    
+    // Reset
+    _currentPageIndex = indexPriorToLayout;
+    _performingLayout = NO;
     
 }
 
@@ -429,7 +501,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
         timePerPhoto = 5;
     }
     _playbackTimer = [NSTimer scheduledTimerWithTimeInterval:timePerPhoto repeats:true block:^(NSTimer * _Nonnull timer) {
-       
+        
         [self goToNextPhoto];
         
     }];
@@ -439,10 +511,12 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 
 - (void)goToNextPhoto {
     
-    NSLog(@"currentPhoto Index: %lu", self.currentPageIndex);
-    NSLog(@"photo count: %lu", self.photoCount);
-    if (self.currentPageIndex < self.photoCount){
+    if (self.currentPageIndex < self.photoCount-1){
         [self changeToPageAtIndex:self.currentPageIndex+1];
+    } else {
+        NSLog(@"no photos left?");
+        self.playbackState = CXBrowserPlaybackStateStopped;
+        [self doneButtonPressed:nil];
     }
     
 }
@@ -464,7 +538,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     // Setup
     _performingLayout = YES;
     
-	// Setup pages
+    // Setup pages
     [_visiblePages removeAllObjects];
     [_recycledPages removeAllObjects];
     
@@ -472,7 +546,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     [self changeToPageAtIndex:_currentPageIndex];
     
     // Content offset
-	_pagingScrollView.contentOffset = [self contentOffsetForPageAtIndex:_currentPageIndex];
+    _pagingScrollView.contentOffset = [self contentOffsetForPageAtIndex:_currentPageIndex];
     [self tilePages];
     _performingLayout = NO;
 }
@@ -481,7 +555,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 - (void)setNavBarAppearance:(BOOL)animated
 {
     self.navigationController.navigationBar.tintColor = nil;
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    //self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     if ([[UINavigationBar class] respondsToSelector:@selector(appearance)])
     {
         [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
@@ -493,7 +567,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 {
     _didSavePreviousStateOfNavBar = YES;
     _previousNavBarTintColor = self.navigationController.navigationBar.tintColor;
-    _previousNavBarStyle = self.navigationController.navigationBar.barStyle;
+    //_previousNavBarStyle = self.navigationController.navigationBar.barStyle;
     if ([[UINavigationBar class] respondsToSelector:@selector(appearance)])
     {
         _previousNavBarBackgroundImageDefault = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
@@ -506,7 +580,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     if (_didSavePreviousStateOfNavBar)
     {
         self.navigationController.navigationBar.tintColor = _previousNavBarTintColor;
-        self.navigationController.navigationBar.barStyle = _previousNavBarStyle;
+        //self.navigationController.navigationBar.barStyle = _previousNavBarStyle;
         if ([[UINavigationBar class] respondsToSelector:@selector(appearance)]) {
             [self.navigationController.navigationBar setBackgroundImage:_previousNavBarBackgroundImageDefault forBarMetrics:UIBarMetricsDefault];
             [self.navigationController.navigationBar setBackgroundImage:_previousNavBarBackgroundImageLandscapePhone forBarMetrics:UIBarMetricsCompact];
@@ -514,7 +588,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
         
         if (_previousViewControllerBackButton) {
             UIViewController *previousViewController = [self.navigationController topViewController]; // We've disappeared so previous is now top
-            previousViewController.navigationItem.backBarButtonItem = _previousViewControllerBackButton;
+            //previousViewController.navigationItem.backBarButtonItem = _previousViewControllerBackButton;
             _previousViewControllerBackButton = nil;
         }
     }
@@ -525,8 +599,8 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 {
     if (index >= [self numberOfPhotos]) index = [self numberOfPhotos]-1;
     _currentPageIndex = index;
-	if ([self isViewLoaded]) {
-//        [self changeToPageAtIndex:index];
+    if ([self isViewLoaded]) {
+        //        [self changeToPageAtIndex:index];
         if (!_viewIsActive) [self tilePages]; // Force tiling if view is not visible
     }
 }
@@ -534,81 +608,81 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 - (void)tilePages
 {
     CGRect visibleBounds = _pagingScrollView.bounds;
-	NSInteger iFirstIndex = (NSInteger)floorf((CGRectGetMinX(visibleBounds)+PADDING*2) / CGRectGetWidth(visibleBounds));
-	NSInteger iLastIndex  = (NSInteger)floorf((CGRectGetMaxX(visibleBounds)-PADDING*2-1) / CGRectGetWidth(visibleBounds));
+    NSInteger iFirstIndex = (NSInteger)floorf((CGRectGetMinX(visibleBounds)+PADDING*2) / CGRectGetWidth(visibleBounds));
+    NSInteger iLastIndex  = (NSInteger)floorf((CGRectGetMaxX(visibleBounds)-PADDING*2-1) / CGRectGetWidth(visibleBounds));
     if (iFirstIndex < 0) iFirstIndex = 0;
     if (iFirstIndex > [self numberOfPhotos] - 1) iFirstIndex = [self numberOfPhotos] - 1;
     if (iLastIndex < 0) iLastIndex = 0;
     if (iLastIndex > [self numberOfPhotos] - 1) iLastIndex = [self numberOfPhotos] - 1;
-	
-	// Recycle no longer needed pages
+    
+    // Recycle no longer needed pages
     NSInteger pageIndex;
-	for (CXZoomingScrollView *page in _visiblePages) {
+    for (CXZoomingScrollView *page in _visiblePages) {
         pageIndex = PAGE_INDEX(page);
-		if (pageIndex < (NSUInteger)iFirstIndex || pageIndex > (NSUInteger)iLastIndex) {
-			[_recycledPages addObject:page];
+        if (pageIndex < (NSUInteger)iFirstIndex || pageIndex > (NSUInteger)iLastIndex) {
+            [_recycledPages addObject:page];
             [page prepareForReuse];
-			[page removeFromSuperview];
-		}
-	}
-	[_visiblePages minusSet:_recycledPages];
+            [page removeFromSuperview];
+        }
+    }
+    [_visiblePages minusSet:_recycledPages];
     while (_recycledPages.count > 2) // Only keep 2 recycled pages
         [_recycledPages removeObject:[_recycledPages anyObject]];
-	
-	// Add missing pages
-	for (NSUInteger index = (NSUInteger)iFirstIndex; index <= (NSUInteger)iLastIndex; index++) {
-		if (![self isDisplayingPageForIndex:index]) {
+    
+    // Add missing pages
+    for (NSUInteger index = (NSUInteger)iFirstIndex; index <= (NSUInteger)iLastIndex; index++) {
+        if (![self isDisplayingPageForIndex:index]) {
             
             // Add new page
-			CXZoomingScrollView *page = [self dequeueRecycledPage];
-			if (!page) {
-				page = [[CXZoomingScrollView alloc] initWithPhotoBrowser:self];
-			}
-			[self configurePage:page forIndex:index];
-			[_visiblePages addObject:page];
-			[_pagingScrollView addSubview:page];
-		}
-	}
+            CXZoomingScrollView *page = [self dequeueRecycledPage];
+            if (!page) {
+                page = [[CXZoomingScrollView alloc] initWithPhotoBrowser:self];
+            }
+            [self configurePage:page forIndex:index];
+            [_visiblePages addObject:page];
+            [_pagingScrollView addSubview:page];
+        }
+    }
 }
 
 - (BOOL)isDisplayingPageForIndex:(NSUInteger)index {
-	for (CXZoomingScrollView *page in _visiblePages)
-		if (PAGE_INDEX(page) == index) return YES;
-	return NO;
+    for (CXZoomingScrollView *page in _visiblePages)
+        if (PAGE_INDEX(page) == index) return YES;
+    return NO;
 }
 
 - (CXZoomingScrollView *)pageDisplayedAtIndex:(NSUInteger)index
 {
     CXZoomingScrollView *thePage = nil;
     thePage.isPhotoSupportedReload = _supportReload;
-	for (CXZoomingScrollView *page in _visiblePages) {
-		if (PAGE_INDEX(page) == index) {
-			thePage = page; break;
-		}
-	}
-	return thePage;
+    for (CXZoomingScrollView *page in _visiblePages) {
+        if (PAGE_INDEX(page) == index) {
+            thePage = page; break;
+        }
+    }
+    return thePage;
 }
 
 - (CXZoomingScrollView *)pageDisplayingPhoto:(id <CXPhotoProtocol>)photo
 {
     CXZoomingScrollView *thePage = nil;
     thePage.isPhotoSupportedReload = _supportReload;
-	for (CXZoomingScrollView *page in _visiblePages) {
-		if (page.photo == photo) {
-			thePage = page; break;
-		}
-	}
-	return thePage;
+    for (CXZoomingScrollView *page in _visiblePages) {
+        if (page.photo == photo) {
+            thePage = page; break;
+        }
+    }
+    return thePage;
 }
 
 - (CXZoomingScrollView *)dequeueRecycledPage
 {
     CXZoomingScrollView *page = [_recycledPages anyObject];
     page.isPhotoSupportedReload = _supportReload;
-	if (page) {
-		[_recycledPages removeObject:page];
-	}
-	return page;
+    if (page) {
+        [_recycledPages removeObject:page];
+    }
+    return page;
 }
 
 - (void)configurePage:(CXZoomingScrollView *)page forIndex:(NSUInteger)index
@@ -660,15 +734,15 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 - (void)changeToPageAtIndex:(NSUInteger)index
 {
     if (index < [self numberOfPhotos]) {
-		CGRect pageFrame = [self frameForPageAtIndex:index];
+        CGRect pageFrame = [self frameForPageAtIndex:index];
         [UIView animateWithDuration:0.5 animations:^{
             [self->_pagingScrollView setContentOffset:CGPointMake(pageFrame.origin.x - PADDING, 0) animated:false];
             //self->_pagingScrollView.contentOffset = CGPointMake(pageFrame.origin.x - PADDING, 0);
-
+            
         }];
-//        [self currentPageDidUpdated];
-	} else {
-        self.playbackState = CXBrowserPlaybackStateStopped;
+        //        [self currentPageDidUpdated];
+    } else {
+        //self.playbackState = CXBrowserPlaybackStateStopped;
         
     }
 }
@@ -688,6 +762,9 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     CGRect pageFrame = bounds;
     pageFrame.size.width -= (2 * PADDING);
     pageFrame.origin.x = (bounds.size.width * index) + PADDING;
+    if(pageFrame.origin.y != 0){
+        pageFrame.origin.y = 0;
+    }
     return pageFrame;
 }
 
@@ -700,8 +777,8 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 - (CGPoint)contentOffsetForPageAtIndex:(NSUInteger)index
 {
     CGFloat pageWidth = _pagingScrollView.bounds.size.width;
-	CGFloat newOffset = index * pageWidth;
-	return CGPointMake(newOffset, 0);
+    CGFloat newOffset = index * pageWidth;
+    return CGPointMake(newOffset, 0);
 }
 
 - (CGRect)frameForLoadingViewAtOrientation:(UIInterfaceOrientation)orientation
@@ -730,7 +807,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 
 - (CGRect)frameForToolBarViewAtOrientation:(UIInterfaceOrientation)orientation
 {
-
+    
     CGFloat height = kToolBarViewHeightPortrait;
     if (_dataSource && [_dataSource respondsToSelector:@selector(heightForToolBarInInterfaceOrientation:)])
     {
@@ -745,7 +822,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
         }
     }
     
-	return CGRectMake(0, self.view.bounds.size.height - height, self.view.bounds.size.width, height);
+    return CGRectMake(0, self.view.bounds.size.height - height, self.view.bounds.size.width, height);
 }
 
 #pragma mark - Navigation & control
@@ -762,7 +839,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
         
         // Status Bar
         if ([UIApplication instancesRespondToSelector:@selector(setStatusBarHidden:withAnimation:)]) {
-           // [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:animated?UIStatusBarAnimationFade:UIStatusBarAnimationNone];
+            // [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:animated?UIStatusBarAnimationFade:UIStatusBarAnimationNone];
         }
         
         // Get status bar height if visible
@@ -779,7 +856,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     
     [self setNavigationBarHidden:hidden animated:animated];
     [self setToolBarHidden:hidden animated:animated];
-	
+    
 }
 
 //Reload
@@ -799,7 +876,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     
     if (_shouldUseDefaultUINavigationBar)
     {
-        self.title = [NSString stringWithFormat:@"%lu of %lu", index+1, (unsigned long)_photoCount];
+        //self.title = [NSString stringWithFormat:@"%lu of %lu", index+1, (unsigned long)_photoCount];
     }
 }
 
@@ -836,19 +913,19 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     {
         // We're not first so show back button
         UIViewController *previousViewController = [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
-        NSString *backButtonTitle = previousViewController.navigationItem.backBarButtonItem ? previousViewController.navigationItem.backBarButtonItem.title : previousViewController.title;
-        UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:backButtonTitle style:UIBarButtonItemStylePlain target:nil action:nil];
+        //NSString *backButtonTitle = previousViewController.navigationItem.backBarButtonItem ? previousViewController.navigationItem.backBarButtonItem.title : previousViewController.title;
+        //UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:backButtonTitle style:UIBarButtonItemStylePlain target:nil action:nil];
         // Appearance
         if ([UIBarButtonItem respondsToSelector:@selector(appearance)]) {
-            [newBackButton setBackButtonBackgroundImage:nil forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-            [newBackButton setBackButtonBackgroundImage:nil forState:UIControlStateNormal barMetrics:UIBarMetricsCompact];
-            [newBackButton setBackButtonBackgroundImage:nil forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
-            [newBackButton setBackButtonBackgroundImage:nil forState:UIControlStateHighlighted barMetrics:UIBarMetricsCompact];
-            [newBackButton setTitleTextAttributes:[NSDictionary dictionary] forState:UIControlStateNormal];
-            [newBackButton setTitleTextAttributes:[NSDictionary dictionary] forState:UIControlStateHighlighted];
+            //[newBackButton setBackButtonBackgroundImage:nil forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+            //[newBackButton setBackButtonBackgroundImage:nil forState:UIControlStateNormal barMetrics:UIBarMetricsCompact];
+            //[newBackButton setBackButtonBackgroundImage:nil forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+            //[newBackButton setBackButtonBackgroundImage:nil forState:UIControlStateHighlighted barMetrics:UIBarMetricsCompact];
+            //  [newBackButton setTitleTextAttributes:[NSDictionary dictionary] forState:UIControlStateNormal];
+            //[newBackButton setTitleTextAttributes:[NSDictionary dictionary] forState:UIControlStateHighlighted];
         }
-        _previousViewControllerBackButton = previousViewController.navigationItem.backBarButtonItem; // remember previous
-        previousViewController.navigationItem.backBarButtonItem = newBackButton;
+        // _previousViewControllerBackButton = previousViewController.navigationItem.backBarButtonItem; // remember previous
+        //previousViewController.navigationItem.backBarButtonItem = newBackButton;
         return YES;
     }
 }
@@ -905,14 +982,14 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.35];
     }
-
+    
     [browserToolBarView setAlpha:hidden ? 0. : 1.];
     
     if (animated) [UIView commitAnimations];
 }
 #pragma mark - Data
 - (void)reloadData {
-
+    
     // Reset
     _photoCount = NSNotFound;
     
@@ -979,14 +1056,14 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 - (UIImage *)imageForPhoto:(id<CXPhotoProtocol>)photo
 {
     if (photo) {
-		// Get image or obtain in background
-		if ([photo underlyingImage]) {
-			return [photo underlyingImage];
-		} else {
+        // Get image or obtain in background
+        if ([photo underlyingImage]) {
+            return [photo underlyingImage];
+        } else {
             [photo loadUnderlyingImageAndNotify];
-		}
-	}
-	return nil;
+        }
+    }
+    return nil;
 }
 
 - (void)loadAdjacentPhotosIfNecessary:(id<CXPhotoProtocol>)photo
@@ -1016,7 +1093,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 
 - (void)unloadAllUnderlyingPhotos
 {
-    for (id p in _photos) { if (p != [NSNull null]) [p unloadUnderlyingImage]; } 
+    for (id p in _photos) { if (p != [NSNull null]) [p unloadUnderlyingImage]; }
 }
 
 #pragma mark - Notify Handle
@@ -1024,7 +1101,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 {
     id <CXPhotoProtocol> photo = [notification object];
     //show loading view
-//    NSUInteger index = [self indexOfPhoto:photo];
+    //    NSUInteger index = [self indexOfPhoto:photo];
     
     CXZoomingScrollView *page = [self pageDisplayingPhoto:photo];
     if (page)
@@ -1087,19 +1164,19 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-	// Remember page index before rotation
-	_pageIndexBeforeRotation = _currentPageIndex;
-	_rotating = YES;
+    // Remember page index before rotation
+    _pageIndexBeforeRotation = _currentPageIndex;
+    _rotating = YES;
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-	_currentPageIndex = _pageIndexBeforeRotation;
+    _currentPageIndex = _pageIndexBeforeRotation;
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-	_rotating = NO;
+    _rotating = NO;
 }
 #pragma clang diagnostic pop
 #pragma mark - Actions
@@ -1111,25 +1188,25 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     // Checks
-	if (!_viewIsActive || _performingLayout || _rotating) return;
-	_scrolling = YES;
-	// Tile pages
-	[self tilePages];
-	
-	// Calculate current page
-	CGRect visibleBounds = _pagingScrollView.bounds;
-	NSInteger index = (NSInteger)(floorf(CGRectGetMidX(visibleBounds) / CGRectGetWidth(visibleBounds)));
+    if (!_viewIsActive || _performingLayout || _rotating) return;
+    _scrolling = YES;
+    // Tile pages
+    [self tilePages];
+    
+    // Calculate current page
+    CGRect visibleBounds = _pagingScrollView.bounds;
+    NSInteger index = (NSInteger)(floorf(CGRectGetMidX(visibleBounds) / CGRectGetWidth(visibleBounds)));
     if (index < 0) index = 0;
-	if (index > [self numberOfPhotos] - 1) index = [self numberOfPhotos] - 1;
-	NSUInteger previousCurrentPage = _currentPageIndex;
-	_currentPageIndex = index;
-	if (_currentPageIndex != previousCurrentPage) {
+    if (index > [self numberOfPhotos] - 1) index = [self numberOfPhotos] - 1;
+    NSUInteger previousCurrentPage = _currentPageIndex;
+    _currentPageIndex = index;
+    if (_currentPageIndex != previousCurrentPage) {
         [self didStartViewingPageAtIndex:index];
     }
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-	
+    
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate

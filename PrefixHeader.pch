@@ -1,0 +1,13 @@
+//
+//  PrefixHeader.h
+//  AirPhoto
+//
+//  Created by Kevin Bradley on 11/23/20.
+//  Copyright © 2020 nito. All rights reserved.
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #define DLog(format, ...) CFShow((__bridge CFStringRef)[NSString stringWithFormat:format, ## __VA_ARGS__]);
+    #define LOG_SELF        NSLog(@"%@ %@", self, NSStringFromSelector(_cmd))
+#endif

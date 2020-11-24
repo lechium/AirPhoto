@@ -11,9 +11,9 @@
 		<string>AAAAAAAAAA.com.nito.AirPhoto</string>
 	</array>
 	<key>com.apple.private.security.no-container</key>
-	<true/>
+	<false/>
 	<key> com.apple.private.security.no-sandbox</key>
-	<true/>
+	<false/>
 	<key>platform-application</key>
 	<true/>
 </dict>

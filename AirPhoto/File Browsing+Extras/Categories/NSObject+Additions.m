@@ -55,7 +55,7 @@
 
 
 - (NSString *)photosPath {
-    
+    /*
     NSFileManager *man = [NSFileManager defaultManager];
     //NSArray* paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     //NSString *cache = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Photos"];
@@ -70,6 +70,8 @@
         }
     }
     return cache;
+     */
+    return @"/var/mobile/Documents/AirPhoto";
 }
 
 
