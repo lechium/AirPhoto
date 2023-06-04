@@ -49,8 +49,7 @@
 		// Image view
 		_photoImageView = [[CXTapDetectingImageView alloc] initWithFrame:CGRectZero];
 		_photoImageView.tapDelegate = self;
-		_photoImageView.contentMode = UIViewContentModeScaleAspectFit;
-        
+		_photoImageView.contentMode = UIViewContentModeCenter;
 		_photoImageView.backgroundColor = [UIColor blackColor];
 		[self addSubview:_photoImageView];
 		
@@ -270,10 +269,10 @@
 }
 
 #pragma mark - Touch Event
-
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
 {
     UIView *view = [super hitTest:point withEvent:event];
+    
     return view;
 }
 

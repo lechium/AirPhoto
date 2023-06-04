@@ -80,6 +80,7 @@ typedef NS_ENUM(NSInteger, CXBrowserPlaybackState) {
  *
  *  @return Height
  */
+#if !TARGET_OS_TV
 - (CGFloat)heightForNavigationBarInInterfaceOrientation:(UIInterfaceOrientation)orientation;
 
 /**
@@ -90,6 +91,8 @@ typedef NS_ENUM(NSInteger, CXBrowserPlaybackState) {
  *  @return Height
  */
 - (CGFloat)heightForToolBarInInterfaceOrientation:(UIInterfaceOrientation)orientation;
+
+#endif
 
 /**
  *  A customlize NavigationBarView to show on top.
